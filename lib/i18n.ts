@@ -130,6 +130,7 @@ export const TOKEN_DESTINATION_LABEL: Record<TokenDestination, LocalizedText> = 
   },
   validator_pool: { ko: '검증자 재분배', en: 'Validator redistribution' },
   shared_security: { ko: '공유 보안 (Cosmos Hub)', en: 'Shared security (Cosmos Hub)' },
+  reward_forfeiture: { ko: '보상만 차감 (원금 보존)', en: 'Reward forfeiture (stake preserved)' },
   none: { ko: '해당 없음', en: 'N/A' },
 };
 

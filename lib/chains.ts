@@ -32,6 +32,7 @@ export type TokenDestination =
   | 'whistleblower_and_burn'
   | 'validator_pool'
   | 'shared_security'
+  | 'reward_forfeiture'
   | 'none';
 
 export type Severity = 'severe' | 'moderate' | 'mild';
@@ -1735,6 +1736,198 @@ const RAW_CHAINS: readonly RawChain[] = [
     },
     color: '#6F7390',
     docsUrl: 'https://github.com/cosmos/cosmos-sdk/tree/main/x/slashing',
+  },
+  {
+    id: 'plasma',
+    name: 'Plasma',
+    nameKo: '플라즈마',
+    symbol: 'XPL',
+    tvlUsd: 578_277_070,
+    consensus: {
+      ko: 'PlasmaBFT (Fast HotStuff 파생 · 비트코인 앵커링)',
+      en: 'PlasmaBFT (Fast HotStuff-derived · Bitcoin-anchored)',
+    },
+    consensusFamily: 'HotStuff',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: {
+          ko: '악의적 행동 / 다운타임',
+          en: 'Misbehavior / Downtime',
+        },
+        description: {
+          ko: '이중 서명 등 프로토콜 위반이나 장기 다운타임 시 검증자 보상 차감.',
+          en: 'Double-signing, protocol violations, or extended downtime lead to validator reward forfeiture.',
+        },
+        penalty: {
+          ko: '보상만 차감 (원금 XPL 스테이크 보존)',
+          en: 'Reward forfeiture only (principal XPL stake preserved)',
+        },
+        severity: 'moderate',
+      },
+    ],
+    tokenDestination: 'reward_forfeiture',
+    tokenHandlingDescription: {
+      ko: 'Plasma는 USDT 제로-수수료 결제에 최적화된 stablecoin L1으로, 전통적 원금 슬래싱이 아닌 "reward slashing" 모델을 채택했습니다. 위반 시 검증자는 스테이킹된 XPL 원금은 보존되고 보상만 받지 못합니다. 비트코인 체크포인팅과 결합된 소프트 슬래싱 접근.',
+      en: 'Plasma is a stablecoin L1 optimized for zero-fee USDT payments. It adopts a "reward slashing" model rather than traditional stake slashing — on violations, validators retain their principal XPL stake but forfeit earned rewards. A soft-slashing approach paired with Bitcoin checkpointing.',
+    },
+    color: '#00E075',
+    docsUrl: 'https://www.plasma.to/faq',
+  },
+  {
+    id: 'flare',
+    name: 'Flare',
+    nameKo: '플레어',
+    symbol: 'FLR',
+    tvlUsd: 172_864_143,
+    consensus: {
+      ko: 'Snowman (Avalanche 파생) + FTSO 데이터 계층',
+      en: 'Snowman (Avalanche-derived) + FTSO data layer',
+    },
+    consensusFamily: 'Snowman',
+    slashingStatus: 'none',
+    slashingNote: {
+      ko: 'Avalanche 계열이라 P-Chain 스테이킹에 슬래싱이 없습니다. 다만 FTSO 데이터 제공자가 부정확한 가격을 제출하면 "chill" 처리되어 보상 참여에서 배제될 수 있습니다.',
+      en: 'As an Avalanche-family chain, there is no slashing on P-Chain staking. However, FTSO data providers submitting inaccurate prices may be "chilled" and excluded from reward participation.',
+    },
+    offenses: [],
+    tokenDestination: 'none',
+    tokenHandlingDescription: {
+      ko: '프로토콜 레벨 슬래싱 없음. 검증자 원금과 위임자 스테이크는 모두 보호되며, FTSO data provider가 chilled되면 해당 검증자 풀의 보상만 상실합니다.',
+      en: "No protocol-level slashing. Validator principal and delegator stakes are both protected. If an FTSO data provider is chilled, only that validator pool's rewards are forgone.",
+    },
+    color: '#E62058',
+    docsUrl: 'https://flare.network/delegate-and-stake',
+  },
+  {
+    id: 'world-chain',
+    name: 'World Chain',
+    nameKo: '월드 체인',
+    symbol: 'WLD',
+    tvlUsd: 21_777_089,
+    consensus: {
+      ko: 'OP Stack (Optimistic Rollup · Geth sequencer, Reth shadow)',
+      en: 'OP Stack (optimistic rollup · Geth sequencer with Reth shadow)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'none',
+    slashingNote: {
+      ko: 'L2 구조로 자체 검증자 세트가 없습니다. Ethereum L1에 data/state 제출 후 fault proof로 부정 트랜잭션을 반전 (Stage 1 rollup 지향).',
+      en: 'As an L2, there is no independent validator set. Data and state are posted to Ethereum L1 with fault proofs to revert fraudulent transactions (targeting Stage 1 rollup).',
+    },
+    offenses: [],
+    tokenDestination: 'none',
+    tokenHandlingDescription: {
+      ko: '전통적 슬래싱 없음 (L2). Sequencer는 Worldcoin Foundation 주도로 현재 퍼미션드 운영 중이며, 부정 트랜잭션은 Ethereum L1의 fault proof로 거부됩니다.',
+      en: 'No traditional slashing (L2). The sequencer is currently permissioned under the Worldcoin Foundation, with fraudulent transactions rejected via Ethereum L1 fault proofs.',
+    },
+    color: '#000000',
+    docsUrl: 'https://world.org/blog/announcements/introducing-world-chain',
+  },
+  {
+    id: 'wemix',
+    name: 'WEMIX3.0',
+    nameKo: '위믹스',
+    symbol: 'WEMIX',
+    tvlUsd: 7_620_410,
+    consensus: {
+      ko: 'SPoA (Stake-based Proof of Authority) · 40 WONDERS',
+      en: 'SPoA (Stake-based Proof of Authority) · 40 WONDERS',
+    },
+    consensusFamily: 'PoSA',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: {
+          ko: '고의 담합 / 노드 오구성',
+          en: 'Deliberate Collusion / Node Misconfiguration',
+        },
+        description: {
+          ko: '생태계 이익에 반하는 고의적 담합 또는 노드 설정 오류로 인한 위반.',
+          en: 'Deliberate collusion against ecosystem interests, or misbehavior due to node misconfiguration.',
+        },
+        penalty: {
+          ko: '스테이크의 일부 차감 (되돌릴 수 없음)',
+          en: 'Partial stake deduction (irreversible)',
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'WEMIX3.0은 Wemade의 게임 특화 L1으로 40 WONDERS(NCP)가 각 1.5M WEMIX를 스테이킹합니다. 고의 담합이나 부적절한 운영이 감지되면 스테이크 일부가 영구 차감됩니다. 장기적으로 SPoA에서 완전 공개 PoS로 전환 중.',
+      en: "WEMIX3.0 is Wemade's gaming-focused L1 where 40 WONDERS (NCPs) each stake 1.5M WEMIX. Deliberate collusion or improper operation leads to irreversible partial stake deduction. The roadmap calls for transitioning from SPoA to fully open PoS.",
+    },
+    color: '#29CCB9',
+    docsUrl: 'https://www.wemix.com/wemix',
+  },
+  {
+    id: 'stable',
+    name: 'Stable',
+    nameKo: '스테이블',
+    symbol: 'STABLE',
+    tvlUsd: 7_586_179,
+    consensus: {
+      ko: 'StableBFT (Delegated PoS · USDT 가스)',
+      en: 'StableBFT (Delegated PoS · USDT gas)',
+    },
+    consensusFamily: 'Tendermint',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: '이중 서명', en: 'Double Signing' },
+        description: {
+          ko: '동일 블록 높이에서 서로 다른 블록에 서명.',
+          en: 'Signing different blocks at the same height.',
+        },
+        penalty: { ko: '본딩 스테이크 슬래싱', en: 'Bonded-stake slashing' },
+        severity: 'severe',
+      },
+      {
+        name: { ko: '장기 다운타임', en: 'Extended Downtime' },
+        description: {
+          ko: '검증자 응답 불능이 장기화될 경우.',
+          en: 'Prolonged validator unresponsiveness.',
+        },
+        penalty: {
+          ko: '본딩 스테이크 일부 슬래싱',
+          en: 'Partial bonded-stake slashing',
+        },
+        severity: 'mild',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Bitfinex 지원으로 2025년 12월 출범한 stablecoin 결제 L1. 수수료는 USDT로 결제되고 STABLE 토큰은 거버넌스/보안 용도입니다. StableBFT (DPoS) 기반으로 이중 서명 또는 장기 다운타임 시 위임된 스테이크 포함 슬래싱됩니다.',
+      en: 'Stablecoin payments L1 launched Dec 2025 with Bitfinex backing. Fees settle in USDT while STABLE serves governance and security. StableBFT (DPoS) slashes bonded stake — including delegated stake — for double-signing or extended downtime.',
+    },
+    color: '#0066FF',
+    docsUrl: 'https://www.stable.xyz/whitepaper.pdf',
+  },
+  {
+    id: 'tempo',
+    name: 'Tempo',
+    nameKo: '템포',
+    symbol: '—',
+    tvlUsd: 2_985_401,
+    consensus: {
+      ko: '고속 BFT (Stripe + Paradigm · Reth 기반 EVM)',
+      en: 'High-speed BFT (Stripe + Paradigm · Reth-based EVM)',
+    },
+    consensusFamily: 'HotStuff',
+    slashingStatus: 'inactive',
+    slashingNote: {
+      ko: '2025년 9월 런칭. 현재 초청된 검증자 세트 운영 중이며, 퍼미션리스 PoS 전환 로드맵에 따라 슬래싱이 공식화될 예정. 현재 공개된 슬래싱 파라미터는 없습니다.',
+      en: 'Launched Sep 2025. Operates with an invited validator set; slashing parameters are to be formalized upon transition to permissionless PoS. No public slashing parameters yet.',
+    },
+    offenses: [],
+    tokenDestination: 'none',
+    tokenHandlingDescription: {
+      ko: 'Stripe와 Paradigm이 인큐베이팅한 결제 전용 L1으로 100K+ TPS, 서브초 finality를 목표로 합니다. 현재 초청 검증자 단계라 슬래싱 정책이 공개되지 않았으며, 퍼미션리스 PoS로의 전환 시점에 구체적인 슬래싱 조건이 발표될 예정입니다.',
+      en: 'Incubated by Stripe and Paradigm as a payments-focused L1 targeting 100K+ TPS with sub-second finality. In the invited-validator phase, no slashing policy has been publicly disclosed; concrete slashing conditions are expected when transitioning to permissionless PoS.',
+    },
+    color: '#FF4500',
+    docsUrl: 'https://tempo.xyz/',
   },
 ];
 
