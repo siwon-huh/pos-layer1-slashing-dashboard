@@ -1868,40 +1868,6 @@ const RAW_CHAINS: readonly RawChain[] = [
     docsUrl: 'https://docs.tempo.xyz/',
   },
   {
-    id: 'citrea',
-    name: 'Citrea',
-    nameKo: '시트레아',
-    symbol: 'cBTC',
-    tvlUsd: 2_856_415,
-    consensus: {
-      ko: 'Bitcoin zkEVM Rollup (Type 2, zk-STARK + RISC Zero)',
-      en: 'Bitcoin zkEVM Rollup (Type 2, zk-STARK + RISC Zero)',
-    },
-    consensusFamily: 'PoS-Other',
-    slashingStatus: 'active',
-    offenses: [
-      {
-        name: { ko: 'BitVM 챌린지-응답', en: 'BitVM Challenge-Response' },
-        description: {
-          ko: 'Verifier가 부정 트랜잭션을 의심하면 챌린지가 시작되고, 패자의 보증금이 슬래싱됨.',
-          en: 'If a verifier suspects fraud, a challenge-response game starts; the loser\'s deposit is slashed.',
-        },
-        penalty: {
-          ko: 'operator 보증금 전액 슬래싱',
-          en: "Operator's full deposit slashed",
-        },
-        severity: 'severe',
-      },
-    ],
-    tokenDestination: 'burn',
-    tokenHandlingDescription: {
-      ko: 'Citrea는 Bitcoin 최초의 ZK 롤업으로 BitVM 기반 챌린지-응답으로 보안을 확보합니다. 부정 상태 전이가 증명되면 sequencer/operator의 BTC 보증금이 슬래싱되어 사용자 자금 보호에 사용됩니다. Multi-sequencer 합의로 전환 중.',
-      en: 'Citrea is the first ZK rollup on Bitcoin, secured via BitVM-based challenge-response. If an invalid state transition is proven, the sequencer/operator\'s BTC deposit is slashed and used to protect user funds. Transitioning to multi-sequencer consensus.',
-    },
-    color: '#FF7A00',
-    docsUrl: 'https://docs.citrea.xyz/',
-  },
-  {
     id: 'astar',
     name: 'Astar',
     nameKo: '아스타',
