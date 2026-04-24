@@ -198,9 +198,9 @@ function StatCard({ label, value, suffix, accent = 'zinc' }: StatCardProps) {
     amber: 'text-amber-400',
   }[accent];
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
+    <div className="flex h-full flex-col justify-between rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
       <div className="text-xs uppercase tracking-wider text-zinc-500">{label}</div>
-      <div className="mt-1 flex items-baseline gap-1.5">
+      <div className="mt-3 flex items-baseline gap-1.5">
         <span className={`text-2xl font-bold md:text-3xl ${accentColor}`}>{value}</span>
         {suffix && <span className="text-xs text-zinc-500">{suffix}</span>}
       </div>
