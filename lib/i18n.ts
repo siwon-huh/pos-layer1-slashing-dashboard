@@ -107,8 +107,8 @@ export const UI: Record<string, LocalizedText> = {
 
   dec_stat_median_nc: { ko: 'Nakamoto 중앙값', en: 'Median Nakamoto' },
   dec_stat_permissionless: { ko: '퍼미션리스', en: 'Permissionless' },
+  dec_stat_hybrid: { ko: '하이브리드', en: 'Hybrid' },
   dec_stat_permissioned: { ko: '퍼미션드', en: 'Permissioned' },
-  dec_stat_unknown: { ko: '데이터 없음', en: 'Unknown' },
 
   dec_col_nakamoto: { ko: '나카모토 계수', en: 'Nakamoto Coefficient' },
   dec_legend_title: { ko: '나카모토 계수란?', en: 'What is the Nakamoto Coefficient?' },

@@ -34,16 +34,15 @@ export function DecentralizationDashboard({ locale }: DecentralizationDashboardP
   }, [query]);
 
   const stats = useMemo(() => {
-    const withData = DECENTRALIZATION.filter((d) => d.nakamotoCoefficient !== null);
-    const ncValues = withData.map((d) => d.nakamotoCoefficient!).sort((a, b) => a - b);
+    const ncValues = DECENTRALIZATION.filter((d) => d.nakamotoCoefficient !== null)
+      .map((d) => d.nakamotoCoefficient!)
+      .sort((a, b) => a - b);
     const median =
-      ncValues.length === 0
-        ? null
-        : ncValues[Math.floor(ncValues.length / 2)];
+      ncValues.length === 0 ? null : ncValues[Math.floor(ncValues.length / 2)];
     const permissionless = DECENTRALIZATION.filter((d) => d.permissioning === 'permissionless').length;
+    const hybrid = DECENTRALIZATION.filter((d) => d.permissioning === 'hybrid').length;
     const permissioned = DECENTRALIZATION.filter((d) => d.permissioning === 'permissioned').length;
-    const unknown = CHAINS.length - DECENTRALIZATION.length;
-    return { median, permissionless, permissioned, unknown };
+    return { median, permissionless, hybrid, permissioned };
   }, []);
 
   return (
@@ -64,7 +63,7 @@ export function DecentralizationDashboard({ locale }: DecentralizationDashboardP
       <section className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
         <StatCard
           label={pick(UI.dec_stat_median_nc, locale)}
-          value={stats.median !== null ? String(stats.median) : '—'}
+          value={stats.median !== null ? String(stats.median) : '-'}
         />
         <StatCard
           label={pick(UI.dec_stat_permissionless, locale)}
@@ -73,16 +72,16 @@ export function DecentralizationDashboard({ locale }: DecentralizationDashboardP
           accent="emerald"
         />
         <StatCard
-          label={pick(UI.dec_stat_permissioned, locale)}
-          value={String(stats.permissioned)}
+          label={pick(UI.dec_stat_hybrid, locale)}
+          value={String(stats.hybrid)}
           suffix={pick(UI.stat_suffix, locale)}
           accent="amber"
         />
         <StatCard
-          label={pick(UI.dec_stat_unknown, locale)}
-          value={String(stats.unknown)}
+          label={pick(UI.dec_stat_permissioned, locale)}
+          value={String(stats.permissioned)}
           suffix={pick(UI.stat_suffix, locale)}
-          accent="zinc"
+          accent="rose"
         />
       </section>
 
@@ -133,7 +132,7 @@ interface StatCardProps {
   label: string;
   value: string;
   suffix?: string;
-  accent?: 'zinc' | 'emerald' | 'amber';
+  accent?: 'zinc' | 'emerald' | 'amber' | 'rose';
 }
 
 function StatCard({ label, value, suffix, accent = 'zinc' }: StatCardProps) {
@@ -141,6 +140,7 @@ function StatCard({ label, value, suffix, accent = 'zinc' }: StatCardProps) {
     zinc: 'text-zinc-100',
     emerald: 'text-emerald-400',
     amber: 'text-amber-400',
+    rose: 'text-rose-400',
   }[accent];
   return (
     <div className="flex h-full flex-col justify-between rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
