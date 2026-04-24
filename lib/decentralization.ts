@@ -24,8 +24,8 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     chainId: 'ethereum',
     nakamotoCoefficient: 350_000,
     nakamotoNote: {
-      ko: '검증자 수 기준. 모든 validator가 32 ETH 동일 가중치를 가지므로 NC = 활성 validator 수의 ⅓ (~1.05M의 1/3). 단, Lido(~28%)·Coinbase·Binance 등 스테이킹 주체 기준으로 보면 실질 NC는 3 수준으로 낮아짐.',
-      en: 'By validator count. All validators share an equal 32 ETH weight, so NC ≈ one-third of active validators (~1.05M / 3). Measured by staking entities like Lido (~28%), Coinbase, Binance, the effective NC drops to around 3.',
+      ko: '검증자 수 기준. 모든 validator가 32 ETH 동일 가중치를 가지므로 NC = 활성 validator 수의 ⅓ (~1.05M의 1/3). 스테이킹 풀 지분(Lido ~28%, Coinbase, Binance 등)을 하나의 엔티티로 묶으면 훨씬 낮은 값이 보고되기도 하지만, Lido는 DAO 거버넌스 하에 다수의 독립 노드 운영자가 키를 운영하는 구조라 단일 공격 주체로 간주하기 어렵다는 반론이 있습니다.',
+      en: 'By validator count. All validators share an equal 32 ETH weight, so NC ≈ one-third of active validators (~1.05M / 3). When staking pool shares (Lido ~28%, Coinbase, Binance, etc.) are aggregated as single entities, much lower numbers are sometimes reported — but Lido is a DAO-governed protocol where many independent node operators hold the keys, so treating it as a single attacker is itself contested.',
     },
     activeValidators: 1_050_000,
     validatorCap: null,
@@ -38,8 +38,8 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'Execution: Geth, Nethermind, Besu, Erigon, Reth / Consensus: Prysm, Lighthouse, Teku, Nimbus, Lodestar, Grandine',
     },
     notes: {
-      ko: '프로토콜 상 검증자 키는 매우 많지만 실질 탈중앙화 리스크는 Lido 같은 대형 스테이킹 주체의 집중도에서 옴.',
-      en: 'The protocol has a very large number of validator keys, but the real decentralization risk comes from concentration among large staking entities like Lido.',
+      ko: 'Lido는 30개+ 독립 노드 운영자와 DAO 거버넌스로 운영되므로 점유율이 높다고 해서 바로 단일 공격 주체가 되지는 않습니다. 다만 Lido DAO의 거버넌스 캡처, 지배적 LST의 시장 리스크(e.g., stETH 페그), 대형 CEX 운영자 집중 등은 여전히 유의미한 중앙화 벡터로 논의됩니다.',
+      en: 'Lido operates with 30+ independent node operators under DAO governance, so a high share does not automatically make it a single attacker. That said, governance capture of the Lido DAO, market risks of a dominant LST (e.g., stETH peg), and concentration among large CEX operators remain meaningful centralization vectors.',
     },
     lastUpdated: '2026-04',
     sourceUrls: ['https://www.rated.network/', 'https://beaconcha.in/'],
