@@ -29,6 +29,12 @@ const permissionStyle: Record<Permissioning, string> = {
   'n/a': 'bg-zinc-700/40 text-zinc-400 border-zinc-700',
 };
 
+const clientStyle: Record<'single' | 'multi' | 'n/a', string> = {
+  multi: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+  single: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+  'n/a': 'bg-zinc-700/40 text-zinc-400 border-zinc-700',
+};
+
 function ncColor(nc: number | null): string {
   if (nc === null) return 'text-zinc-500';
   if (nc <= 5) return 'text-rose-400';
@@ -121,9 +127,6 @@ export function DecentralizationTable({ rows, locale }: DecentralizationTablePro
                 {pick(UI.dec_col_top33, locale)}
               </th>
               <th className="hidden px-3 py-3 text-left font-medium md:table-cell">
-                {pick(UI.dec_col_entry, locale)}
-              </th>
-              <th className="hidden px-3 py-3 text-left font-medium md:table-cell">
                 {pick(UI.dec_col_client, locale)}
               </th>
               <th className="w-10 px-3 py-3 text-right font-medium" aria-hidden></th>
@@ -200,13 +203,12 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
         <td className="hidden px-3 py-3 text-right align-middle font-mono text-xs text-zinc-300 lg:table-cell">
           {dec?.top33SharePct != null ? `${dec.top33SharePct.toFixed(1)}%` : '-'}
         </td>
-        <td className="hidden max-w-[18rem] px-3 py-3 align-middle text-xs text-zinc-400 md:table-cell">
-          <div className="truncate">
-            {dec ? pick(dec.minStake, locale) : pick(UI.no_data, locale)}
-          </div>
-        </td>
-        <td className="hidden px-3 py-3 align-middle text-xs text-zinc-400 md:table-cell">
-          {pick(CLIENT_DIVERSITY_LABEL[dec?.clientDiversity ?? 'n/a'], locale)}
+        <td className="hidden px-3 py-3 align-middle md:table-cell">
+          <span
+            className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] uppercase tracking-wider ${clientStyle[dec?.clientDiversity ?? 'n/a']}`}
+          >
+            {pick(CLIENT_DIVERSITY_LABEL[dec?.clientDiversity ?? 'n/a'], locale)}
+          </span>
         </td>
         <td className="px-3 py-3 text-right align-middle">
           <svg
@@ -223,7 +225,7 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
       </tr>
       {expanded && (
         <tr className="border-b border-zinc-800 bg-zinc-950/60">
-          <td colSpan={9} className="px-6 py-5">
+          <td colSpan={8} className="px-6 py-5">
             <ExpandedDetail chain={chain} dec={dec} locale={locale} />
           </td>
         </tr>
