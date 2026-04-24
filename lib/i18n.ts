@@ -25,14 +25,14 @@ export function pick(text: LocalizedText, locale: Locale): string {
 
 export const UI: Record<string, LocalizedText> = {
   badge: {
-    ko: '상위 100 L1 체인 중 PoS · TVL 순 정렬 · DefiLlama 2026.04',
-    en: 'Top-100 L1 PoS chains · Sorted by TVL · DefiLlama 2026.04',
+    ko: '상위 100 L1 체인 중 PoS, TVL 순 정렬, DefiLlama 2026.04',
+    en: 'Top-100 L1 PoS chains, Sorted by TVL, DefiLlama 2026.04',
   },
   title_prefix: { ko: 'PoS L1 ', en: 'PoS L1 ' },
   title_main: { ko: '슬래싱', en: 'Slashing' },
   title_suffix: { ko: ' 대시보드', en: ' Dashboard' },
   subtitle: {
-    ko: '시가총액 상위 100 L1 블록체인 중 Proof-of-Stake 체인을 대상으로, 합의 메커니즘 · 슬래싱 발동 조건 · 슬래싱된 토큰의 처리 방식을 정리합니다. PoW 체인과 L2/사이드체인은 제외되며, PoS지만 슬래싱이 없는 체인도 비교를 위해 포함되어 있습니다.',
+    ko: '시가총액 상위 100 L1 블록체인 중 Proof-of-Stake 체인을 대상으로, 합의 메커니즘, 슬래싱 발동 조건, 슬래싱된 토큰의 처리 방식을 정리합니다. PoW 체인과 L2/사이드체인은 제외되며, PoS지만 슬래싱이 없는 체인도 비교를 위해 포함되어 있습니다.',
     en: 'Consensus mechanisms, slashable conditions, and handling of slashed tokens for Proof-of-Stake L1 blockchains among the top 100 by market cap. PoW chains and L2s/sidechains are excluded; PoS chains without slashing are included for comparison.',
   },
   stat_total: { ko: '조사 대상', en: 'Surveyed' },
@@ -48,7 +48,7 @@ export const UI: Record<string, LocalizedText> = {
   },
   legend_treasury_title: { ko: '트레저리 / 커뮤니티 풀', en: 'Treasury / Community Pool' },
   legend_treasury_desc: {
-    ko: '거버넌스가 통제하는 풀로 이동. 예: DOT, KSM (Treasury), TIA·SEI·DYDX·OSMO (Community Pool)',
+    ko: '거버넌스가 통제하는 풀로 이동. 예: DOT, KSM (Treasury), TIA, SEI, DYDX, OSMO (Community Pool)',
     en: 'Moved to a governance-controlled pool. E.g., DOT, KSM (Treasury); TIA, SEI, DYDX, OSMO (Community Pool)',
   },
   legend_validator_title: { ko: '검증자 재분배', en: 'Validator redistribution' },
@@ -79,8 +79,8 @@ export const UI: Record<string, LocalizedText> = {
   table_header_token: { ko: '토큰 처리', en: 'Token handling' },
   table_count_prefix: { ko: '', en: '' },
   table_count_suffix: {
-    ko: '개 체인 · 행을 클릭해 세부 정보 펼치기',
-    en: ' chains · click a row to expand details',
+    ko: '개 체인, 행을 클릭해 세부 정보 펼치기',
+    en: ' chains, click a row to expand details',
   },
   expand_all: { ko: '모두 펼치기', en: 'Expand all' },
   collapse_all: { ko: '모두 접기', en: 'Collapse all' },
