@@ -36,6 +36,13 @@ function ncColor(nc: number | null): string {
   return 'text-emerald-400';
 }
 
+function formatNc(nc: number): string {
+  if (nc >= 1_000_000) return `${(nc / 1_000_000).toFixed(1)}M`;
+  if (nc >= 10_000) return `${Math.round(nc / 1_000)}K`;
+  if (nc >= 1_000) return `${(nc / 1_000).toFixed(1)}K`;
+  return String(nc);
+}
+
 function formatValidators(active: number | null, cap: number | null, locale: Locale): string {
   if (active === null && cap === null) return pick(UI.no_data, locale);
   const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K` : `${n}`);
@@ -178,7 +185,7 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
           </div>
         </td>
         <td className={`px-3 py-3 text-right align-middle font-mono text-lg font-semibold ${ncColor(nc)}`}>
-          {nc ?? '—'}
+          {nc !== null ? formatNc(nc) : '-'}
         </td>
         <td className="hidden px-3 py-3 text-right align-middle font-mono text-xs text-zinc-300 md:table-cell">
           {formatValidators(dec?.activeValidators ?? null, dec?.validatorCap ?? null, locale)}
@@ -245,7 +252,7 @@ function ExpandedDetail({
         label={pick(UI.dec_detail_nakamoto, locale)}
         value={
           dec.nakamotoCoefficient !== null
-            ? String(dec.nakamotoCoefficient)
+            ? formatNc(dec.nakamotoCoefficient)
             : pick(UI.no_data, locale)
         }
         description={

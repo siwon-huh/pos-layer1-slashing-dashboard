@@ -1763,31 +1763,6 @@ const RAW_CHAINS: readonly RawChain[] = [
     docsUrl: 'https://flare.network/delegate-and-stake',
   },
   {
-    id: 'world-chain',
-    name: 'World Chain',
-    nameKo: '월드 체인',
-    symbol: 'WLD',
-    tvlUsd: 21_777_089,
-    consensus: {
-      ko: 'OP Stack (Optimistic Rollup, Geth sequencer, Reth shadow)',
-      en: 'OP Stack (optimistic rollup, Geth sequencer with Reth shadow)',
-    },
-    consensusFamily: 'PoS-Other',
-    slashingStatus: 'none',
-    slashingNote: {
-      ko: 'L2 구조로 자체 검증자 세트가 없습니다. Ethereum L1에 data/state 제출 후 fault proof로 부정 트랜잭션을 반전 (Stage 1 rollup 지향).',
-      en: 'As an L2, there is no independent validator set. Data and state are posted to Ethereum L1 with fault proofs to revert fraudulent transactions (targeting Stage 1 rollup).',
-    },
-    offenses: [],
-    tokenDestination: 'none',
-    tokenHandlingDescription: {
-      ko: '전통적 슬래싱 없음 (L2). Sequencer는 Worldcoin Foundation 주도로 현재 퍼미션드 운영 중이며, 부정 트랜잭션은 Ethereum L1의 fault proof로 거부됩니다.',
-      en: 'No traditional slashing (L2). The sequencer is currently permissioned under the Worldcoin Foundation, with fraudulent transactions rejected via Ethereum L1 fault proofs.',
-    },
-    color: '#000000',
-    docsUrl: 'https://world.org/blog/announcements/introducing-world-chain',
-  },
-  {
     id: 'wemix',
     name: 'WEMIX3.0',
     nameKo: '위믹스',
@@ -2056,31 +2031,6 @@ const RAW_CHAINS: readonly RawChain[] = [
     docsUrl: 'https://docs.somnia.network/',
   },
   {
-    id: 'eclipse',
-    name: 'Eclipse',
-    nameKo: '이클립스',
-    symbol: 'ES',
-    tvlUsd: 1_363_478,
-    consensus: {
-      ko: 'SVM Ethereum L2 (Celestia DA + RISC Zero fraud proofs)',
-      en: 'SVM Ethereum L2 (Celestia DA + RISC Zero fraud proofs)',
-    },
-    consensusFamily: 'PoS-Other',
-    slashingStatus: 'none',
-    slashingNote: {
-      ko: '자체 L2 검증자 슬래싱 없음. 보안은 Ethereum 세틀먼트 + Celestia DA (Celestia 검증자는 데이터 미공개 시 슬래싱) + RISC Zero 사기 증명에 의존.',
-      en: 'No L2-level validator slashing. Security derives from Ethereum settlement + Celestia DA (Celestia validators can be slashed for data withholding) + RISC Zero fraud proofs.',
-    },
-    offenses: [],
-    tokenDestination: 'none',
-    tokenHandlingDescription: {
-      ko: 'Eclipse는 Solana Virtual Machine을 Ethereum L2로 포팅한 첫 SVM 롤업입니다. 자체 슬래싱은 없고, Celestia DA 레이어 슬래싱(TIA, 2%) + Ethereum L1 fault proof(RISC Zero)에 의해 보안이 확보됩니다.',
-      en: 'Eclipse is the first SVM rollup on Ethereum, porting the Solana Virtual Machine as an L2. It has no own slashing; security is provided via Celestia DA slashing (TIA, 2%) and Ethereum L1 fault proofs (RISC Zero).',
-    },
-    color: '#000000',
-    docsUrl: 'https://docs.eclipse.xyz/',
-  },
-  {
     id: 'mantra',
     name: 'MANTRA',
     nameKo: '만트라',
@@ -2232,58 +2182,6 @@ const RAW_CHAINS: readonly RawChain[] = [
     },
     color: '#00D6AA',
     docsUrl: 'https://www.zetachain.com/docs/',
-  },
-  {
-    id: 'bitlayer',
-    name: 'Bitlayer',
-    nameKo: '비트레이어',
-    symbol: 'BTR',
-    tvlUsd: 863_703,
-    consensus: {
-      ko: 'PoS + BitVM Rollup (Bitcoin 앵커링)',
-      en: 'PoS + BitVM Rollup (Bitcoin-anchored)',
-    },
-    consensusFamily: 'PoS-Other',
-    slashingStatus: 'active',
-    offenses: [
-      {
-        name: {
-          ko: 'Pre-signing 불참',
-          en: 'Missed Pre-signing Ceremony',
-        },
-        description: {
-          ko: '각 에폭의 BitVM 트랜잭션 그래프 pre-signing에 적시 참여 실패.',
-          en: "Failing to participate in each epoch's BitVM transaction-graph pre-signing on time.",
-        },
-        penalty: {
-          ko: '본딩 BTR 스테이크 일부 슬래싱',
-          en: 'Partial bonded BTR stake slashing',
-        },
-        severity: 'moderate',
-      },
-      {
-        name: {
-          ko: 'BitVM 사기 증명',
-          en: 'BitVM Fraud Proof',
-        },
-        description: {
-          ko: 'Watcher가 부정 트랜잭션을 Bitcoin mainnet에서 증명.',
-          en: 'A watcher proves fraud on Bitcoin mainnet.',
-        },
-        penalty: {
-          ko: '악의적 operator 본드 슬래싱',
-          en: "Malicious operator's bond slashed",
-        },
-        severity: 'severe',
-      },
-    ],
-    tokenDestination: 'burn',
-    tokenHandlingDescription: {
-      ko: 'Bitlayer는 BitVM 기반 최초의 Bitcoin L2로 PoS 레이어에서 빠른 블록 생성, BitVM 롤업으로 Bitcoin L1 보안 상속. 검증자가 BTR을 본딩하고, 사기 증명 시 본딩이 슬래싱되어 피해 복구에 사용됩니다.',
-      en: 'Bitlayer is the first BitVM-based Bitcoin L2 combining PoS for fast block production with BitVM rollup to inherit Bitcoin L1 security. Validators bond BTR; bonded stake is slashed on fraud proofs and used for recovery.',
-    },
-    color: '#FFA31A',
-    docsUrl: 'https://docs.bitlayer.org/',
   },
   {
     id: 'vana',

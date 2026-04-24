@@ -113,8 +113,8 @@ export const UI: Record<string, LocalizedText> = {
   dec_col_nakamoto: { ko: '나카모토 계수', en: 'Nakamoto Coefficient' },
   dec_legend_title: { ko: '나카모토 계수란?', en: 'What is the Nakamoto Coefficient?' },
   dec_legend_body: {
-    ko: '체인의 컨센서스를 정지(halt)시키기 위해 담합이 필요한 최소 검증자 수입니다. 정확히는 지분 합계가 ⅓을 초과하는 최소 상위 검증자 집합의 크기로 정의됩니다. 숫자가 낮을수록 소수 주체에 의한 중앙화 리스크가 크다는 의미. 예를 들어 Ethereum은 Lido, Coinbase, Binance 같은 스테이킹 주체 기준 3 수준이며, Polkadot은 NPoS가 스테이크를 297개 검증자에게 균등 분산시키도록 설계되어 175에 이릅니다.',
-    en: "The minimum number of validators whose combined stake exceeds ⅓, enough to halt the chain's consensus through collusion. Lower numbers indicate higher centralization risk from a small group. For example, Ethereum sits around 3 when measured by staking entities like Lido, Coinbase, and Binance, while Polkadot reaches 175 because NPoS is explicitly designed to spread stake evenly across 297 validators.",
+    ko: '체인의 컨센서스를 정지(halt)시키기 위해 담합이 필요한 최소 검증자 수입니다. 지분 합계가 ⅓을 초과하는 최소 상위 검증자 집합의 크기로 정의되며, 숫자가 낮을수록 소수 주체에 의한 중앙화 리스크가 큽니다. 본 대시보드는 검증자(노드) 수 기준을 사용합니다. 예를 들어 모든 validator가 동일 가중치를 갖는 Ethereum은 활성 validator 수(~1.05M)의 ⅓인 약 350K에 달하고, Cosmos Hub처럼 validator마다 스테이크가 불균형하면 상위 7개만으로 ⅓을 넘어 NC=7로 낮아집니다.',
+    en: "The minimum number of validators whose combined stake exceeds ⅓, enough to halt the chain's consensus through collusion. Lower numbers indicate higher centralization risk from a small group. This dashboard uses a validator-count basis. For example, on Ethereum where every validator carries an equal weight, NC reaches around 350K (one-third of ~1.05M active validators), while on Cosmos Hub where stake is uneven, the top 7 validators alone cross ⅓, giving NC=7.",
   },
   dec_legend_color_low: { ko: '≤ 5 (심각)', en: '≤ 5 (severe)' },
   dec_legend_color_mid: { ko: '6 ~ 15 (중간)', en: '6 to 15 (moderate)' },
