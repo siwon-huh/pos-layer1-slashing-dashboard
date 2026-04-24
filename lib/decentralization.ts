@@ -871,6 +871,37 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     lastUpdated: '2026-04',
     sourceUrls: ['https://docs.vana.org/'],
   },
+  {
+    chainId: 'canton',
+    nakamotoCoefficient: null,
+    nakamotoNote: {
+      ko: 'Permissioned 2/3 BFT 구조로 스테이크 기반 합의가 아님. 전통적 NC 정의가 적용되지 않습니다.',
+      en: 'Permissioned 2/3 BFT without stake-based consensus; the traditional NC definition does not apply.',
+    },
+    activeValidators: 42,
+    validatorCap: null,
+    minStake: {
+      ko: '해당 없음 (GSF 초대 기반 · 기관 심사)',
+      en: 'N/A (GSF invitation with institutional vetting)',
+    },
+    permissioning: 'permissioned',
+    top33SharePct: null,
+    clientDiversity: 'single',
+    clientDiversityNote: {
+      ko: 'Digital Asset의 Canton 프로토콜 단일 구현 (DAML 기반)',
+      en: 'Single Digital Asset Canton protocol implementation (DAML-based)',
+    },
+    notes: {
+      ko: 'Cumberland, Five North, MPC-Holding, Coin Metrics, Kiln, Hypernative 등 기관 운영자가 Super Validator 노드를 운영합니다. 전 노드가 모든 Canton Coin 전송을 2/3 BFT로 검증하며, GSF(Linux Foundation 파트너십)가 거버넌스를 조율.',
+      en: 'Institutional operators such as Cumberland, Five North, MPC-Holding, Coin Metrics, Kiln, and Hypernative run Super Validator nodes. All nodes validate every Canton Coin transfer via 2/3 BFT, with the GSF (Linux Foundation partnership) coordinating governance.',
+    },
+    lastUpdated: '2026-04',
+    sourceUrls: [
+      'https://www.canton.network/global-synchronizer',
+      'https://www.cantonscan.com/supervalidators',
+      'https://www.kiln.fi/protocols/canton',
+    ],
+  },
 ];
 
 export function getDecentralization(chainId: string): DecentralizationData | undefined {

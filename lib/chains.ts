@@ -2220,6 +2220,31 @@ const RAW_CHAINS: readonly RawChain[] = [
     color: '#0052FF',
     docsUrl: 'https://docs.vana.org/',
   },
+  {
+    id: 'canton',
+    name: 'Canton Network',
+    nameKo: '캔톤 네트워크',
+    symbol: 'CC',
+    tvlUsd: 0,
+    consensus: {
+      ko: 'Global Synchronizer (2/3 BFT, Digital Asset, DAML)',
+      en: 'Global Synchronizer (2/3 BFT, Digital Asset, DAML)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'none',
+    slashingNote: {
+      ko: '기관 운영자(Super Validator) ~42개가 2/3 BFT로 운영하는 permissioned 구조. Digital Asset 문서에 따르면 "검증자는 오프라인이거나 부적절한 행동을 해도 페널티를 받지 않으며, 스테이킹된 자산을 잃을 리스크도 없음" - 전통적 슬래싱 개념이 미적용됩니다.',
+      en: 'Permissioned 2/3 BFT operated by ~42 institutional Super Validators. Per Digital Asset docs: "Validators are not penalized for being offline or misbehaving. There is no risk of losing staked assets because staking, in the traditional sense, is not part of the Canton validator model."',
+    },
+    offenses: [],
+    tokenDestination: 'none',
+    tokenHandlingDescription: {
+      ko: '토큰 스테이킹/슬래싱 개념 없음. 악의적 Super Validator는 GSF(Global Synchronizer Foundation, Linux Foundation 파트너십) 거버넌스 투표로 자격 박탈되는 방식으로만 제재됩니다. CC 토큰은 수수료 결제와 인센티브 용도이지 보증금이 아닙니다.',
+      en: 'No token staking/slashing concept. Misbehaving Super Validators are removed only via governance votes by the GSF (Global Synchronizer Foundation, Linux Foundation partnership). The CC token is used for fees and incentives, not as bonded collateral.',
+    },
+    color: '#0E1D3A',
+    docsUrl: 'https://www.canton.network/',
+  },
 ];
 
 export const CHAINS: readonly Chain[] = [...RAW_CHAINS]
