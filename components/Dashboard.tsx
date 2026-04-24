@@ -103,9 +103,6 @@ export function Dashboard({ locale, chains = CHAINS }: DashboardProps) {
           {pick(UI.title_main, locale)}
           {pick(UI.title_suffix, locale)}
         </h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base">
-          {pick(UI.subtitle, locale)}
-        </p>
       </header>
 
       <section className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">

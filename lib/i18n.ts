@@ -28,10 +28,6 @@ export const UI: Record<string, LocalizedText> = {
   title_prefix: { ko: 'PoS L1 ', en: 'PoS L1 ' },
   title_main: { ko: '슬래싱', en: 'Slashing' },
   title_suffix: { ko: ' 대시보드', en: ' Dashboard' },
-  subtitle: {
-    ko: '시가총액 상위 100 L1 블록체인 중 Proof-of-Stake 체인을 대상으로, 합의 메커니즘, 슬래싱 발동 조건, 슬래싱된 토큰의 처리 방식을 정리합니다. PoW 체인과 L2/사이드체인은 제외되며, PoS지만 슬래싱이 없는 체인도 비교를 위해 포함되어 있습니다.',
-    en: 'Consensus mechanisms, slashable conditions, and handling of slashed tokens for Proof-of-Stake L1 blockchains among the top 100 by market cap. PoW chains and L2s/sidechains are excluded; PoS chains without slashing are included for comparison.',
-  },
   stat_total: { ko: '조사 대상', en: 'Surveyed' },
   stat_active: { ko: '슬래싱 활성', en: 'Slashing active' },
   stat_inactive: { ko: '비활성 (구현됨)', en: 'Inactive (implemented)' },
@@ -99,10 +95,6 @@ export const UI: Record<string, LocalizedText> = {
   nav_decentralization: { ko: '노드 탈중앙화', en: 'Node decentralization' },
 
   decentralization_title_main: { ko: '노드 탈중앙화', en: 'Node decentralization' },
-  decentralization_subtitle: {
-    ko: '각 PoS L1의 검증자 탈중앙화 수준을 Nakamoto Coefficient, 검증자 수, 진입 장벽, 상위 스테이크 점유율, 퍼미션 모델, 클라이언트 다양성 기준으로 비교합니다. L2 및 permissioned 체인은 해당되는 항목만 표시합니다.',
-    en: 'Compare validator decentralization across PoS L1s using Nakamoto Coefficient, validator count, entry barrier, top-stake concentration, permissioning model, and client diversity. L2s and permissioned chains show only applicable metrics.',
-  },
 
   dec_stat_median_nc: { ko: 'Nakamoto 중앙값', en: 'Median Nakamoto' },
   dec_stat_permissionless: { ko: '퍼미션리스', en: 'Permissionless' },

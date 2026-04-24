@@ -56,9 +56,6 @@ export function DecentralizationDashboard({ locale }: DecentralizationDashboardP
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
           PoS L1 {pick(UI.decentralization_title_main, locale)}
         </h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base">
-          {pick(UI.decentralization_subtitle, locale)}
-        </p>
       </header>
 
       <section className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
