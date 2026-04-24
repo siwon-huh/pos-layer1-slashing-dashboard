@@ -1655,43 +1655,6 @@ const RAW_CHAINS: readonly RawChain[] = [
     docsUrl: 'https://docs.celestia.org/operate/consensus-validators/slashing/',
   },
   {
-    id: 'kusama',
-    name: 'Kusama',
-    nameKo: '쿠사마',
-    symbol: 'KSM',
-    tvlUsd: 1_000_000,
-    consensus: {
-      ko: 'NPoS (Polkadot과 동일 · 더 공격적 파라미터)',
-      en: 'NPoS (same as Polkadot · more aggressive parameters)',
-    },
-    consensusFamily: 'NPoS',
-    slashingStatus: 'active',
-    offenses: [
-      {
-        name: {
-          ko: '이중 서명 · 유효성 위반',
-          en: 'Equivocation & Invalid Validation',
-        },
-        description: {
-          ko: 'Polkadot과 동일한 위반 유형.',
-          en: 'Same violation types as Polkadot.',
-        },
-        penalty: {
-          ko: '동일한 비례 슬래싱, 지연 기간이 더 짧음 (~7일)',
-          en: 'Same proportional slashing with a shorter defer window (~7 days)',
-        },
-        severity: 'severe',
-      },
-    ],
-    tokenDestination: 'treasury',
-    tokenHandlingDescription: {
-      ko: 'Polkadot과 동일하게 Treasury로 전송됩니다. 다만 카나리아 네트워크 특성상 거버넌스 개입 기간이 짧고 실제 슬래싱이 더 자주 실행되어 왔습니다.',
-      en: 'Transferred to the Treasury just like Polkadot. However, as a canary network, governance-intervention windows are shorter and slashing has been executed more frequently in practice.',
-    },
-    color: '#000000',
-    docsUrl: 'https://wiki.polkadot.com/learn/learn-offenses/',
-  },
-  {
     id: 'cosmos-hub',
     name: 'Cosmos Hub',
     nameKo: '코스모스 허브',
@@ -1911,23 +1874,453 @@ const RAW_CHAINS: readonly RawChain[] = [
     symbol: '—',
     tvlUsd: 2_985_401,
     consensus: {
-      ko: '고속 BFT (Stripe + Paradigm · Reth 기반 EVM)',
-      en: 'High-speed BFT (Stripe + Paradigm · Reth-based EVM)',
+      ko: 'Simplex BFT (결정론적 finality · Reth 기반 EVM)',
+      en: 'Simplex BFT (deterministic finality · Reth-based EVM)',
     },
     consensusFamily: 'HotStuff',
     slashingStatus: 'inactive',
     slashingNote: {
-      ko: '2025년 9월 런칭. 현재 초청된 검증자 세트 운영 중이며, 퍼미션리스 PoS 전환 로드맵에 따라 슬래싱이 공식화될 예정. 현재 공개된 슬래싱 파라미터는 없습니다.',
-      en: 'Launched Sep 2025. Operates with an invited validator set; slashing parameters are to be formalized upon transition to permissionless PoS. No public slashing parameters yet.',
+      ko: '2025년 9월 Stripe·Paradigm이 인큐베이팅 발표, 2026년 3월 18일 메인넷 런칭 (Machine Payments Protocol 동시 공개). 메인넷 출시 후에도 검증자 세트는 core team + 초기 파트너(Visa, Mastercard, OpenAI, Anthropic 등)로 퍼미션드 운영 중이며, 공개된 슬래싱 파라미터는 아직 없습니다.',
+      en: 'Incubation announced by Stripe & Paradigm in Sep 2025; mainnet launched Mar 18, 2026 (alongside the Machine Payments Protocol). Even post-launch the validator set is permissioned — operated by the core team and early partners (Visa, Mastercard, OpenAI, Anthropic, etc.) — with no public slashing parameters yet.',
     },
     offenses: [],
     tokenDestination: 'none',
     tokenHandlingDescription: {
-      ko: 'Stripe와 Paradigm이 인큐베이팅한 결제 전용 L1으로 100K+ TPS, 서브초 finality를 목표로 합니다. 현재 초청 검증자 단계라 슬래싱 정책이 공개되지 않았으며, 퍼미션리스 PoS로의 전환 시점에 구체적인 슬래싱 조건이 발표될 예정입니다.',
-      en: 'Incubated by Stripe and Paradigm as a payments-focused L1 targeting 100K+ TPS with sub-second finality. In the invited-validator phase, no slashing policy has been publicly disclosed; concrete slashing conditions are expected when transitioning to permissionless PoS.',
+      ko: 'Stripe와 Paradigm이 공동 설계한 결제 전용 L1으로 서브초 블록 타임과 Simplex BFT 기반 즉시 finality를 제공합니다. Series A로 $500M (밸류 $5B) 투자 유치, DoorDash·Visa·Mastercard·OpenAI·Anthropic·Shopify 등이 디자인 파트너. 메인넷 이후에도 제한된 검증자 세트로 운영 중이며, 슬래싱 조건은 점진적 탈중앙화(퍼미션리스 전환) 시점에 공개될 예정입니다.',
+      en: 'A payments-focused L1 co-designed by Stripe and Paradigm, providing sub-second block times and deterministic instant finality via Simplex BFT. Raised $500M Series A at a $5B valuation with design partners including DoorDash, Visa, Mastercard, OpenAI, Anthropic, and Shopify. Even post-mainnet the network runs with a small permissioned validator set; slashing conditions will be published as the network progressively decentralizes.',
     },
     color: '#FF4500',
-    docsUrl: 'https://tempo.xyz/',
+    docsUrl: 'https://docs.tempo.xyz/',
+  },
+  {
+    id: 'citrea',
+    name: 'Citrea',
+    nameKo: '시트레아',
+    symbol: 'cBTC',
+    tvlUsd: 2_856_415,
+    consensus: {
+      ko: 'Bitcoin zkEVM Rollup (Type 2, zk-STARK + RISC Zero)',
+      en: 'Bitcoin zkEVM Rollup (Type 2, zk-STARK + RISC Zero)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: 'BitVM 챌린지-응답', en: 'BitVM Challenge-Response' },
+        description: {
+          ko: 'Verifier가 부정 트랜잭션을 의심하면 챌린지가 시작되고, 패자의 보증금이 슬래싱됨.',
+          en: 'If a verifier suspects fraud, a challenge-response game starts; the loser\'s deposit is slashed.',
+        },
+        penalty: {
+          ko: 'operator 보증금 전액 슬래싱',
+          en: "Operator's full deposit slashed",
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Citrea는 Bitcoin 최초의 ZK 롤업으로 BitVM 기반 챌린지-응답으로 보안을 확보합니다. 부정 상태 전이가 증명되면 sequencer/operator의 BTC 보증금이 슬래싱되어 사용자 자금 보호에 사용됩니다. Multi-sequencer 합의로 전환 중.',
+      en: 'Citrea is the first ZK rollup on Bitcoin, secured via BitVM-based challenge-response. If an invalid state transition is proven, the sequencer/operator\'s BTC deposit is slashed and used to protect user funds. Transitioning to multi-sequencer consensus.',
+    },
+    color: '#FF7A00',
+    docsUrl: 'https://docs.citrea.xyz/',
+  },
+  {
+    id: 'astar',
+    name: 'Astar',
+    nameKo: '아스타',
+    symbol: 'ASTR',
+    tvlUsd: 1_925_463,
+    consensus: {
+      ko: 'Polkadot 파라체인 (Collator 기반) + Ethereum L2 지원',
+      en: 'Polkadot parachain (collator-based) + Ethereum L2 support',
+    },
+    consensusFamily: 'NPoS',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: 'Collator 거버넌스 슬래싱', en: 'Collator Governance Slashing' },
+        description: {
+          ko: '부적절한 운영 시 거버넌스(MainCouncil 3/4 또는 Referendum)에 의해 강제 슬래싱.',
+          en: 'Forced slashing by governance (3/4 MainCouncil or Referendum) for improper operation.',
+        },
+        penalty: {
+          ko: '3.2M ASTR 본드 일부 슬래싱',
+          en: 'Partial slashing of 3.2M ASTR bond',
+        },
+        severity: 'moderate',
+      },
+      {
+        name: {
+          ko: 'Polkadot 릴레이 슬래싱',
+          en: 'Polkadot Relay Slashing',
+        },
+        description: {
+          ko: 'Astar는 Polkadot 릴레이 체인 검증자에 의해 확정되며, 해당 위반은 Polkadot에서 슬래싱.',
+          en: "Astar is finalized by Polkadot relay-chain validators; violations are slashed on Polkadot's side.",
+        },
+        penalty: {
+          ko: 'Polkadot NPoS 공식 (최대 100%)',
+          en: 'Polkadot NPoS formula (up to 100%)',
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Astar는 Polkadot 파라체인이자 WASM+EVM 하이브리드입니다. Collator는 3.2M ASTR을 본드하며, 거버넌스 투표로 슬래싱 가능. 실제 블록 확정 보안은 Polkadot 릴레이 검증자에게 의존하므로 해당 레이어 슬래싱이 주된 안전장치입니다.',
+      en: 'Astar is both a Polkadot parachain and a WASM+EVM hybrid. Collators bond 3.2M ASTR and can be slashed via governance votes. Finality security ultimately depends on Polkadot relay validators, where the main slashing layer sits.',
+    },
+    color: '#0070EB',
+    docsUrl: 'https://docs.astar.network/',
+  },
+  {
+    id: 'supra',
+    name: 'Supra',
+    nameKo: '수프라',
+    symbol: 'SUPRA',
+    tvlUsd: 1_566_870,
+    consensus: {
+      ko: 'Moonshot BFT (Tribes & Clans · MoveVM)',
+      en: 'Moonshot BFT (Tribes & Clans · MoveVM)',
+    },
+    consensusFamily: 'HotStuff',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: '악의적 검증 / 다운타임', en: 'Malicious Validation / Downtime' },
+        description: {
+          ko: '이중 서명, 악의적 오라클 보고, 장기 다운타임 등.',
+          en: 'Double signing, malicious oracle reporting, or extended downtime.',
+        },
+        penalty: {
+          ko: '본딩된 SUPRA 스테이크 슬래싱',
+          en: 'Bonded SUPRA stake slashing',
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Supra는 Moonshot BFT(서브초 finality, ~500K TPS 목표)와 MoveVM을 지원하는 수직 통합 L1입니다. 검증자는 SUPRA를 본딩하여 합의·오라클·dVRF·자동화 서비스를 제공하며, 악의적 행동 시 스테이크가 슬래싱됩니다.',
+      en: 'Supra is a vertically integrated L1 with Moonshot BFT (sub-second finality, ~500K TPS target) and MoveVM support. Validators bond SUPRA to back consensus, oracles, dVRF, and automation; malicious behavior results in stake slashing.',
+    },
+    color: '#EE3A66',
+    docsUrl: 'https://docs.supra.com/',
+  },
+  {
+    id: 'somnia',
+    name: 'Somnia',
+    nameKo: '솜니아',
+    symbol: 'SOMI',
+    tvlUsd: 1_376_919,
+    consensus: {
+      ko: 'MultiStream Consensus (Autobahn-파생 BFT-PoS)',
+      en: 'MultiStream Consensus (Autobahn-derived BFT-PoS)',
+    },
+    consensusFamily: 'HotStuff',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: '이중 서명', en: 'Double Signing' },
+        description: {
+          ko: '동일 높이 블록 또는 증명에 대한 충돌 서명.',
+          en: 'Conflicting signatures on the same block or proof.',
+        },
+        penalty: {
+          ko: '본딩 스테이크 슬래싱',
+          en: 'Bonded stake slashing',
+        },
+        severity: 'severe',
+      },
+      {
+        name: { ko: '다운타임', en: 'Downtime' },
+        description: {
+          ko: '검증자 응답 불능이 지속될 경우.',
+          en: 'Sustained validator unresponsiveness.',
+        },
+        penalty: {
+          ko: '스테이크 일부 슬래싱',
+          en: 'Partial stake slashing',
+        },
+        severity: 'mild',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: '각 검증자가 독립된 data chain을 병렬 운영하고 consensus chain이 헤더를 집계하는 MultiStream 구조로 1M+ TPS를 목표. 최소 5M SOMI 스테이킹 필요. 전체 가스비의 50%가 소각되는 디플레 토큰 이코노미와 별개로, 슬래싱된 SOMI도 소각됩니다.',
+      en: "MultiStream has each validator run an independent data chain in parallel with a consensus chain aggregating headers, targeting 1M+ TPS. Requires 5M SOMI minimum stake. Separate from the 50% gas-fee burn deflationary model, slashed SOMI is also burned.",
+    },
+    color: '#00E599',
+    docsUrl: 'https://docs.somnia.network/',
+  },
+  {
+    id: 'eclipse',
+    name: 'Eclipse',
+    nameKo: '이클립스',
+    symbol: 'ES',
+    tvlUsd: 1_363_478,
+    consensus: {
+      ko: 'SVM Ethereum L2 (Celestia DA + RISC Zero fraud proofs)',
+      en: 'SVM Ethereum L2 (Celestia DA + RISC Zero fraud proofs)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'none',
+    slashingNote: {
+      ko: '자체 L2 검증자 슬래싱 없음. 보안은 Ethereum 세틀먼트 + Celestia DA (Celestia 검증자는 데이터 미공개 시 슬래싱) + RISC Zero 사기 증명에 의존.',
+      en: 'No L2-level validator slashing. Security derives from Ethereum settlement + Celestia DA (Celestia validators can be slashed for data withholding) + RISC Zero fraud proofs.',
+    },
+    offenses: [],
+    tokenDestination: 'none',
+    tokenHandlingDescription: {
+      ko: 'Eclipse는 Solana Virtual Machine을 Ethereum L2로 포팅한 첫 SVM 롤업입니다. 자체 슬래싱은 없고, Celestia DA 레이어 슬래싱(TIA, 2%) + Ethereum L1 fault proof(RISC Zero)에 의해 보안이 확보됩니다.',
+      en: 'Eclipse is the first SVM rollup on Ethereum, porting the Solana Virtual Machine as an L2. It has no own slashing; security is provided via Celestia DA slashing (TIA, 2%) and Ethereum L1 fault proofs (RISC Zero).',
+    },
+    color: '#000000',
+    docsUrl: 'https://docs.eclipse.xyz/',
+  },
+  {
+    id: 'mantra',
+    name: 'MANTRA',
+    nameKo: '만트라',
+    symbol: 'OM',
+    tvlUsd: 1_343_920,
+    consensus: {
+      ko: 'CometBFT (Cosmos SDK · RWA 특화 L1)',
+      en: 'CometBFT (Cosmos SDK · RWA-focused L1)',
+    },
+    consensusFamily: 'Tendermint',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: '이중 서명', en: 'Double Signing' },
+        description: {
+          ko: '동일 블록 높이에서 충돌하는 서명.',
+          en: 'Conflicting signatures at the same block height.',
+        },
+        penalty: {
+          ko: '본딩 스테이크의 5% + Tombstone',
+          en: '5% of bonded stake + Tombstone',
+        },
+        severity: 'severe',
+      },
+      {
+        name: { ko: '다운타임', en: 'Downtime' },
+        description: {
+          ko: '서명 윈도우 내 과도한 블록 누락.',
+          en: 'Excessive missed blocks within the signing window.',
+        },
+        penalty: {
+          ko: '0.01% + Jail',
+          en: '0.01% + Jail',
+        },
+        severity: 'mild',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'RWA 특화 Cosmos SDK 기반 L1으로 KYC/AML·identity·permissions 모듈을 내장합니다. 표준 Cosmos 슬래싱 패턴으로 OM이 소각되며, unbonding 기간은 8일입니다.',
+      en: 'An RWA-focused Cosmos SDK L1 with built-in KYC/AML, identity, and permissions modules. Follows standard Cosmos slashing: OM is burned, with an 8-day unbonding period.',
+    },
+    color: '#FFD400',
+    docsUrl: 'https://docs.mantrachain.io/',
+  },
+  {
+    id: 'story',
+    name: 'Story',
+    nameKo: '스토리',
+    symbol: 'IP',
+    tvlUsd: 914_760,
+    consensus: {
+      ko: 'CometBFT + Proof-of-Creativity (IP 특화 PoS)',
+      en: 'CometBFT + Proof-of-Creativity (IP-focused PoS)',
+    },
+    consensusFamily: 'Tendermint',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: '이중 서명', en: 'Double Signing' },
+        description: {
+          ko: '동일 블록 높이에서 충돌하는 서명.',
+          en: 'Conflicting signatures at the same block height.',
+        },
+        penalty: {
+          ko: '본딩 IP 스테이크 슬래싱 + Tombstone',
+          en: 'Bonded IP stake slashing + Tombstone',
+        },
+        severity: 'severe',
+      },
+      {
+        name: { ko: '다운타임', en: 'Downtime' },
+        description: {
+          ko: '장기 다운타임 또는 서명 누락.',
+          en: 'Extended downtime or missed signings.',
+        },
+        penalty: {
+          ko: '본딩 스테이크 일부 슬래싱 + Jail',
+          en: 'Partial bonded-stake slashing + Jail',
+        },
+        severity: 'mild',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Story는 지식재산(IP) 등록/라이센싱/수익화 전용 L1으로 CometBFT + Proof-of-Creativity를 사용합니다. 검증자는 IP 토큰을 본딩하며, 이중 서명이나 장기 다운타임 시 위임된 스테이크 포함 슬래싱됩니다.',
+      en: 'Story is an L1 dedicated to IP registration, licensing, and monetization, using CometBFT with Proof-of-Creativity. Validators bond IP tokens; delegated stake is also affected on double-sign or extended downtime slashing.',
+    },
+    color: '#A1F043',
+    docsUrl: 'https://docs.story.foundation/',
+  },
+  {
+    id: 'zetachain',
+    name: 'ZetaChain',
+    nameKo: '제타체인',
+    symbol: 'ZETA',
+    tvlUsd: 903_907,
+    consensus: {
+      ko: 'Cosmos SDK + Observer + TSS Signer (크로스체인)',
+      en: 'Cosmos SDK + Observer + TSS Signer (cross-chain)',
+    },
+    consensusFamily: 'Tendermint',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: { ko: 'Core validator 이중 서명', en: 'Core Validator Equivocation' },
+        description: {
+          ko: '표준 Cosmos SDK 위반 (이중 서명, 충돌 투표).',
+          en: 'Standard Cosmos SDK violations (double-sign, conflicting votes).',
+        },
+        penalty: {
+          ko: '본딩 ZETA 슬래싱 + Tombstone',
+          en: 'Bonded ZETA slashing + Tombstone',
+        },
+        severity: 'severe',
+      },
+      {
+        name: {
+          ko: 'Observer-Signer 실패',
+          en: 'Observer-Signer Failure',
+        },
+        description: {
+          ko: '외부 체인 이벤트 관찰 실패, 잘못된 이벤트 보고, TSS keygen/keysign 불참.',
+          en: 'Failing to observe external chain events, reporting incorrect events, or missing TSS keygen/keysign.',
+        },
+        penalty: {
+          ko: '연결된 core validator의 ZETA 스테이크 슬래싱',
+          en: "Slashes the paired core validator's ZETA stake",
+        },
+        severity: 'moderate',
+      },
+      {
+        name: { ko: '다운타임', en: 'Downtime' },
+        description: {
+          ko: '5,000 블록 윈도우 내 50% 미만 서명.',
+          en: 'Signing less than 50% of a 5,000-block window.',
+        },
+        penalty: {
+          ko: '0.1% 슬래싱 + 10분 Jail',
+          en: '0.1% slashing + 10-minute Jail',
+        },
+        severity: 'mild',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'ZetaChain은 Cosmos SDK 기반 크로스체인 L1으로 Observer(외부 체인 이벤트 관측)와 TSS Signer(외부 체인 트랜잭션 서명)가 합의에 참여합니다. 표준 Cosmos 슬래싱에 더해 observer/signer 역할 실패 시 연결된 core validator의 ZETA가 슬래싱됩니다.',
+      en: 'ZetaChain is a Cosmos SDK cross-chain L1 where Observers (watch external-chain events) and TSS Signers (sign external-chain txs) participate in consensus. In addition to standard Cosmos slashing, observer/signer failures slash the paired core validator\'s ZETA.',
+    },
+    color: '#00D6AA',
+    docsUrl: 'https://www.zetachain.com/docs/',
+  },
+  {
+    id: 'bitlayer',
+    name: 'Bitlayer',
+    nameKo: '비트레이어',
+    symbol: 'BTR',
+    tvlUsd: 863_703,
+    consensus: {
+      ko: 'PoS + BitVM Rollup (Bitcoin 앵커링)',
+      en: 'PoS + BitVM Rollup (Bitcoin-anchored)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: {
+          ko: 'Pre-signing 불참',
+          en: 'Missed Pre-signing Ceremony',
+        },
+        description: {
+          ko: '각 에폭의 BitVM 트랜잭션 그래프 pre-signing에 적시 참여 실패.',
+          en: "Failing to participate in each epoch's BitVM transaction-graph pre-signing on time.",
+        },
+        penalty: {
+          ko: '본딩 BTR 스테이크 일부 슬래싱',
+          en: 'Partial bonded BTR stake slashing',
+        },
+        severity: 'moderate',
+      },
+      {
+        name: {
+          ko: 'BitVM 사기 증명',
+          en: 'BitVM Fraud Proof',
+        },
+        description: {
+          ko: 'Watcher가 부정 트랜잭션을 Bitcoin mainnet에서 증명.',
+          en: 'A watcher proves fraud on Bitcoin mainnet.',
+        },
+        penalty: {
+          ko: '악의적 operator 본드 슬래싱',
+          en: "Malicious operator's bond slashed",
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Bitlayer는 BitVM 기반 최초의 Bitcoin L2로 PoS 레이어에서 빠른 블록 생성, BitVM 롤업으로 Bitcoin L1 보안 상속. 검증자가 BTR을 본딩하고, 사기 증명 시 본딩이 슬래싱되어 피해 복구에 사용됩니다.',
+      en: 'Bitlayer is the first BitVM-based Bitcoin L2 — PoS for fast block production and BitVM rollup to inherit Bitcoin L1 security. Validators bond BTR; bonded stake is slashed on fraud proofs and used for recovery.',
+    },
+    color: '#FFA31A',
+    docsUrl: 'https://docs.bitlayer.org/',
+  },
+  {
+    id: 'vana',
+    name: 'Vana',
+    nameKo: '바나',
+    symbol: 'VANA',
+    tvlUsd: 697_926,
+    consensus: {
+      ko: 'Nagoya Consensus (Bittensor Yuma 파생, 퍼지 합의)',
+      en: 'Nagoya Consensus (Bittensor Yuma-derived, fuzzy consensus)',
+    },
+    consensusFamily: 'PoS-Other',
+    slashingStatus: 'active',
+    offenses: [
+      {
+        name: {
+          ko: '악의적 행동 / 12시간 이상 다운타임',
+          en: 'Malicious Behavior / Downtime >12h',
+        },
+        description: {
+          ko: '악의적 합의 참여 또는 에폭당 12시간 초과 오프라인.',
+          en: 'Malicious consensus participation, or offline for more than 12 hours per epoch.',
+        },
+        penalty: {
+          ko: '스테이크의 10% 슬래싱',
+          en: '10% stake slashing',
+        },
+        severity: 'severe',
+      },
+    ],
+    tokenDestination: 'burn',
+    tokenHandlingDescription: {
+      ko: 'Vana는 DataDAO를 위한 EVM 호환 L1으로, L1 검증자(64→128, 35K VANA 스테이킹)가 체인 보안을, Satya Validator(TEE 기반)가 데이터 검증을 담당합니다. Nagoya 퍼지 합의에서 악의/장기 다운타임 시 스테이크의 10%가 슬래싱됩니다.',
+      en: 'Vana is an EVM-compatible L1 for DataDAOs. L1 validators (64→128, 35K VANA stake) secure the chain, while Satya validators (TEE-based) handle data validation. In Nagoya fuzzy consensus, malicious behavior or >12h downtime triggers a 10% stake slashing.',
+    },
+    color: '#0052FF',
+    docsUrl: 'https://docs.vana.org/',
   },
 ];
 
