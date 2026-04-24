@@ -284,6 +284,40 @@ function ExpandedDetail({
         value={pick(CLIENT_DIVERSITY_LABEL[dec.clientDiversity], locale)}
         description={dec.clientDiversityNote ? pick(dec.clientDiversityNote, locale) : undefined}
       />
+      <section className="lg:col-span-3">
+        <h4 className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+          {pick(UI.dec_detail_top_validators, locale)}
+        </h4>
+        {dec.topValidators && dec.topValidators.length > 0 ? (
+          <ol className="mt-2 divide-y divide-zinc-800 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/60">
+            {dec.topValidators.slice(0, 10).map((v, i) => (
+              <li
+                key={`${v.name}-${i}`}
+                className="flex items-center gap-3 px-3 py-2 text-xs"
+              >
+                <span className="w-5 shrink-0 text-right font-mono text-zinc-500">
+                  {i + 1}
+                </span>
+                <span className="flex-1 truncate text-zinc-200">{v.name}</span>
+                <span className="hidden w-32 sm:block">
+                  <span
+                    className="inline-block h-1.5 rounded-full bg-zinc-700"
+                    style={{ width: `${Math.min(100, v.stakeSharePct * 3)}%` }}
+                  />
+                </span>
+                <span className="w-14 shrink-0 text-right font-mono text-zinc-300">
+                  {v.stakeSharePct.toFixed(2)}%
+                </span>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="mt-2 rounded-lg border border-zinc-800 bg-zinc-900/60 p-3 text-xs text-zinc-500">
+            {pick(UI.dec_detail_no_validator_data, locale)}
+          </p>
+        )}
+      </section>
+
       {dec.notes && (
         <p className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-3 text-xs leading-relaxed text-zinc-400 lg:col-span-3">
           {pick(dec.notes, locale)}

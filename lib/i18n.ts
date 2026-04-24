@@ -128,6 +128,11 @@ export const UI: Record<string, LocalizedText> = {
   dec_detail_client: { ko: '클라이언트 다양성', en: 'Client diversity' },
   dec_detail_sources: { ko: '데이터 출처', en: 'Sources' },
   dec_detail_last_updated: { ko: '업데이트 기준', en: 'Last updated' },
+  dec_detail_top_validators: { ko: '상위 10 검증자', en: 'Top 10 validators' },
+  dec_detail_no_validator_data: {
+    ko: '공개 익스플로러에서 검증된 데이터 없음',
+    en: 'No verified explorer data',
+  },
 
   permission_permissionless: { ko: '퍼미션리스', en: 'Permissionless' },
   permission_hybrid: { ko: '하이브리드', en: 'Hybrid' },
