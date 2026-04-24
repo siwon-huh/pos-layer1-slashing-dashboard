@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { CHAINS, type Chain } from '@/lib/chains';
 import { UI, pick, type Locale } from '@/lib/i18n';
 import { ChainTable } from './ChainTable';
+import { Credits } from './Credits';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { PageNav } from './PageNav';
 
@@ -97,9 +98,6 @@ export function Dashboard({ locale, chains = CHAINS }: DashboardProps) {
           <PageNav locale={locale} active="slashing" />
           <LocaleSwitcher current={locale} />
         </div>
-        <div className="inline-flex items-center self-start rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
-          {pick(UI.badge, locale)}
-        </div>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
           {pick(UI.title_prefix, locale)}
           {pick(UI.title_main, locale)}
@@ -181,6 +179,7 @@ export function Dashboard({ locale, chains = CHAINS }: DashboardProps) {
 
       <footer className="mt-16 border-t border-zinc-800 pt-6 text-xs leading-relaxed text-zinc-500">
         <p>{pick(UI.footer, locale)}</p>
+        <Credits locale={locale} />
       </footer>
     </div>
   );

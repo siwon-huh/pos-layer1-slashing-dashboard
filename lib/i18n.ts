@@ -25,10 +25,6 @@ export function pick(text: LocalizedText, locale: Locale): string {
 }
 
 export const UI: Record<string, LocalizedText> = {
-  badge: {
-    ko: '상위 100 L1 체인 중 PoS, TVL 순 정렬, DefiLlama 2026.04',
-    en: 'Top-100 L1 PoS chains, Sorted by TVL, DefiLlama 2026.04',
-  },
   title_prefix: { ko: 'PoS L1 ', en: 'PoS L1 ' },
   title_main: { ko: '슬래싱', en: 'Slashing' },
   title_suffix: { ko: ' 대시보드', en: ' Dashboard' },
@@ -72,6 +68,9 @@ export const UI: Record<string, LocalizedText> = {
     ko: '각 체인의 슬래싱 파라미터는 거버넌스/업그레이드에 따라 변동될 수 있으며, 상세 수치는 공식 문서를 기준으로 삼아야 합니다. TVL은 DefiLlama 스냅샷이며, L2 및 스테이블코인은 본 대시보드 기준 상위 100 L1 선정에서 제외했습니다.',
     en: 'Slashing parameters may vary with governance and protocol upgrades; refer to official docs for precise values. TVL figures are DefiLlama snapshots; L2s and stablecoins are excluded from the top-100 L1 selection.',
   },
+  credits_prefix: { ko: '제작: ', en: 'Built by ' },
+  credits_author: { ko: 'c4lvin', en: 'c4lvin' },
+  credits_role: { ko: ' (Four Pillars 리서처)', en: ', Four Pillars Researcher' },
   table_header_rank: { ko: '#', en: '#' },
   table_header_chain: { ko: '체인', en: 'Chain' },
   table_header_tvl: { ko: 'TVL', en: 'TVL' },

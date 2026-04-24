@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { CHAINS } from '@/lib/chains';
 import { DECENTRALIZATION, getDecentralization } from '@/lib/decentralization';
 import { UI, pick, type Locale } from '@/lib/i18n';
+import { Credits } from './Credits';
 import { DecentralizationTable, type ChainWithDec } from './DecentralizationTable';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { PageNav } from './PageNav';
@@ -123,6 +124,7 @@ export function DecentralizationDashboard({ locale }: DecentralizationDashboardP
 
       <footer className="mt-16 border-t border-zinc-800 pt-6 text-xs leading-relaxed text-zinc-500">
         <p>{pick(UI.footer, locale)}</p>
+        <Credits locale={locale} />
       </footer>
     </div>
   );
