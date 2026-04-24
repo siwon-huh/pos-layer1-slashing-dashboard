@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { LOCALES, type Locale } from '@/lib/i18n';
 
 interface LocaleSwitcherProps {
@@ -10,7 +13,15 @@ const LABEL: Record<Locale, string> = {
   en: 'English',
 };
 
+function swapLocale(pathname: string, locale: Locale): string {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length === 0) return `/${locale}`;
+  segments[0] = locale;
+  return `/${segments.join('/')}`;
+}
+
 export function LocaleSwitcher({ current }: LocaleSwitcherProps) {
+  const pathname = usePathname();
   return (
     <div
       role="group"
@@ -22,7 +33,7 @@ export function LocaleSwitcher({ current }: LocaleSwitcherProps) {
         return (
           <Link
             key={locale}
-            href={`/${locale}`}
+            href={swapLocale(pathname, locale)}
             aria-current={active ? 'page' : undefined}
             className={`px-3 py-1.5 transition ${
               active
