@@ -104,8 +104,8 @@ export const UI: Record<string, LocalizedText> = {
   dec_col_nakamoto: { ko: '나카모토 계수', en: 'Nakamoto Coefficient' },
   dec_legend_title: { ko: '나카모토 계수란?', en: 'What is the Nakamoto Coefficient?' },
   dec_legend_body: {
-    ko: '체인의 컨센서스를 정지(halt)시키기 위해 담합이 필요한 최소 검증자 수입니다. 지분 합계가 ⅓을 초과하는 최소 상위 검증자 집합의 크기로 정의되며, 숫자가 낮을수록 소수 주체에 의한 중앙화 리스크가 큽니다. 본 대시보드는 검증자(노드) 수 기준을 사용합니다. 예를 들어 모든 validator가 동일 가중치를 갖는 Ethereum은 활성 validator 수(~1.05M)의 ⅓인 약 350K에 달하고, Cosmos Hub처럼 validator마다 스테이크가 불균형하면 상위 7개만으로 ⅓을 넘어 NC=7로 낮아집니다.',
-    en: "The minimum number of validators whose combined stake exceeds ⅓, enough to halt the chain's consensus through collusion. Lower numbers indicate higher centralization risk from a small group. This dashboard uses a validator-count basis. For example, on Ethereum where every validator carries an equal weight, NC reaches around 350K (one-third of ~1.05M active validators), while on Cosmos Hub where stake is uneven, the top 7 validators alone cross ⅓, giving NC=7.",
+    ko: '체인의 컨센서스를 정지(halt) 또는 공격하기 위해 담합이 필요한 최소 검증자 수입니다. 임계치는 컨센서스 보안 가정에 따라 체인별로 달라집니다. BFT 계열(Tendermint/CometBFT, HotStuff, IBFT, Gasper 등)은 > ⅓ stake면 파이널리티를 halt할 수 있어 ⅓ 임계치를 사용합니다. Longest-chain PoS(Cardano의 Ouroboros 등)는 > ½ stake가 필요한 51% 공격 모델이며, Stacks Nakamoto는 signer 70% 가중치 수락 모델이라 > 30% stake가 halt 임계치입니다. 개별 체인의 임계치와 계산 방식은 각 행의 상세 정보에 명시됩니다.',
+    en: "The minimum number of validators whose collusion could halt or attack consensus. The threshold varies by security assumption: BFT-style chains (Tendermint/CometBFT, HotStuff, IBFT, Gasper, etc.) use > ⅓ stake, since that's enough to halt finality. Longest-chain PoS like Cardano's Ouroboros follows a 51%-attack model requiring > ½ stake. Stacks Nakamoto requires 70% signer weight to accept blocks, so its halt threshold is > 30% stake. Per-chain thresholds and methodology are noted in each row's expanded view.",
   },
   dec_legend_color_low: { ko: '≤ 5 (심각)', en: '≤ 5 (severe)' },
   dec_legend_color_mid: { ko: '6 ~ 15 (중간)', en: '6 to 15 (moderate)' },
@@ -113,7 +113,6 @@ export const UI: Record<string, LocalizedText> = {
   dec_col_validators: { ko: '검증자', en: 'Validators' },
   dec_col_entry: { ko: '진입 장벽', en: 'Entry barrier' },
   dec_col_permission: { ko: '퍼미션', en: 'Permission' },
-  dec_col_top33: { ko: '상위 ⅓', en: 'Top ⅓' },
   dec_col_client: { ko: '클라이언트', en: 'Client' },
 
   dec_detail_nakamoto: { ko: 'Nakamoto Coefficient', en: 'Nakamoto Coefficient' },
@@ -124,7 +123,6 @@ export const UI: Record<string, LocalizedText> = {
   dec_detail_validators: { ko: '검증자 세트', en: 'Validator set' },
   dec_detail_entry: { ko: '진입 장벽', en: 'Entry barrier' },
   dec_detail_permission: { ko: '퍼미션 모델', en: 'Permissioning model' },
-  dec_detail_top33: { ko: '상위 ⅓ 점유', en: 'Top ⅓ stake share' },
   dec_detail_client: { ko: '클라이언트 다양성', en: 'Client diversity' },
   dec_detail_sources: { ko: '데이터 출처', en: 'Sources' },
   dec_detail_last_updated: { ko: '업데이트 기준', en: 'Last updated' },

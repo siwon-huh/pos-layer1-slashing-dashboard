@@ -16,7 +16,6 @@ export interface DecentralizationData {
   readonly validatorCap: number | null;
   readonly minStake: LocalizedText;
   readonly permissioning: Permissioning;
-  readonly top33SharePct: number | null;
   readonly clientDiversity: ClientDiversityStatus;
   readonly clientDiversityNote?: LocalizedText;
   readonly topValidators?: readonly ValidatorEntry[];
@@ -37,7 +36,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '32 ETH (Pectra 이후 최대 2048 ETH 압축)', en: '32 ETH (up to 2048 ETH post-Pectra)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'multi',
     clientDiversityNote: {
       ko: 'Execution: Geth, Nethermind, Besu, Erigon, Reth / Consensus: Prysm, Lighthouse, Teku, Nimbus, Lodestar, Grandine',
@@ -57,7 +55,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 45,
     minStake: { ko: '자체 본딩 최소 10,000 BNB, 선출되려면 ~20K+ BNB 필요', en: 'Min self-bond 10,000 BNB; ~20K+ BNB typically required to be elected' },
     permissioning: 'hybrid',
-    top33SharePct: 40,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'BSC Geth 포크 단일 클라이언트', en: 'Single BSC Geth fork' },
     topValidators: [
@@ -86,7 +83,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '규정상 없음 (투표 수수료 ~1 SOL/day, 실질적으로 고성능 하드웨어 필요)', en: 'No hard minimum; vote fees ~1 SOL/day; high-end hardware effectively required' },
     permissioning: 'permissionless',
-    top33SharePct: 33,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Agave (구 Solana Labs), Jito-Solana, Firedancer (Frankendancer 포함)', en: 'Agave (formerly Solana Labs), Jito-Solana, Firedancer (incl. Frankendancer)' },
     topValidators: [
@@ -111,7 +107,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 27,
     minStake: { ko: '득표 기반 (스테이킹이 아닌 TRX freeze 투표)', en: 'Vote-based (TRX freeze for votes, not staking)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Poloniex', stakeSharePct: 9.01 },
@@ -139,7 +134,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 N에 진입 (dynamic)', en: 'Dynamic threshold to enter top N by bonded stake' },
     permissioning: 'permissionless',
-    top33SharePct: 45,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Figment', stakeSharePct: 5.5 },
@@ -167,7 +161,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '~10K HYPE 본딩 + 위임 필요', en: '~10K HYPE self-bond + delegations required' },
     permissioning: 'hybrid',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Hyper Foundation 2', stakeSharePct: 13.24 },
@@ -195,7 +188,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 105,
     minStake: { ko: '~100K POL 셀프 스테이크 + 위임', en: '~100K POL self-stake + delegations' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Upbit Staking', stakeSharePct: 11.07 },
@@ -219,7 +211,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '2,000 AVAX (검증자), 25 AVAX (위임)', en: '2,000 AVAX (validator) or 25 AVAX (delegator)' },
     permissioning: 'permissionless',
-    top33SharePct: 32,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'AvalancheGo 단일 (Coreth 서브컴포넌트)', en: 'Single AvalancheGo (Coreth subcomponent)' },
     topValidators: [
@@ -244,7 +235,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '30M SUI (현재 요구 · 커뮤니티 위임 포함)', en: '30M SUI (current requirement, incl. delegation)' },
     permissioning: 'permissionless',
-    top33SharePct: 30,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'sui-node 단일 구현 (Rust)', en: 'Single sui-node (Rust)' },
     topValidators: [
@@ -269,7 +259,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '초기 초청 검증자 (구체 스테이크 미공개)', en: 'Invited validators at launch (stake requirement not public)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Backpack', stakeSharePct: 11.032 },
@@ -297,7 +286,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 30,
     minStake: { ko: '본딩 스테이크로 상위 30에 진입 (dynamic)', en: 'Dynamic threshold to enter top 30 by bonded stake' },
     permissioning: 'permissionless',
-    top33SharePct: 45,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Pioneer 11', stakeSharePct: 9.8 },
@@ -325,7 +313,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '1M APT (셀프 본딩 기준 진입 임계치)', en: '1M APT (self-bond threshold to enter set)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'aptos-core (Rust) 단일', en: 'Single aptos-core (Rust)' },
     topValidators: [
@@ -354,7 +341,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '해당 없음 (스테이킹 없음)', en: 'N/A (no staking)' },
     permissioning: 'n/a',
-    top33SharePct: null,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Stellar Core · horizon (공식 구현)', en: 'Stellar Core and Horizon (official implementations)' },
     notes: {
@@ -371,7 +357,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '초기 초청 검증자 (구체 수치 미공개)', en: 'Invited validators at launch (requirement not public)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     topValidators: [
       { name: '54afb644c7', stakeSharePct: 25.39 },
@@ -388,12 +373,15 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'cardano',
-    nakamotoCoefficient: 57,
+    nakamotoCoefficient: null,
+    nakamotoNote: {
+      ko: 'Ouroboros Praos는 longest-chain PoS로 safety 가정이 > ½ stake (51% 공격). 공개 트래커는 대부분 ⅓ 임계치 기준 NC를 노출하여 Cardano 보안 모델과 불일치. 온체인 ½ 기준 NC가 직접 검증되기 전까지 미표시.',
+      en: 'Ouroboros Praos is longest-chain PoS with a > ½ stake (51%-attack) safety assumption. Public trackers mostly expose ⅓-threshold NC, which does not match Cardano\'s security model. Hidden until a ½-threshold NC is directly verified on-chain.',
+    },
     activeValidators: 3000,
     validatorCap: null,
     minStake: { ko: '스테이크 풀 운영: 500 ADA 보증금 + pledge. 위임: 제한 없음', en: 'Pool operator: 500 ADA deposit + pledge. Delegation: no minimum' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'cardano-node (Haskell), Jormungandr (deprecated)', en: 'cardano-node (Haskell), Jormungandr (deprecated)' },
     topValidators: [
@@ -409,20 +397,23 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       { name: 'PILOT', stakeSharePct: 0.67 },
     ],
     notes: {
-      ko: '3000+개의 스테이크 풀, 풀 운영자가 saturation 메커니즘으로 인위적 중앙화 방지. NC는 기업·거래소 풀 집계 기준.',
-      en: '3000+ stake pools, with saturation mechanism preventing artificial centralization. NC reflects corporate/exchange pool aggregation.',
+      ko: '3000+개의 스테이크 풀, 풀 운영자가 saturation 메커니즘으로 인위적 중앙화 방지. 상위 10개 풀 모두 전체의 0.7% 내외로 장기 분포.',
+      en: '3000+ stake pools, with saturation mechanism preventing artificial centralization. Top 10 pools are all around 0.7% of total — long-tail distribution.',
     },
     lastUpdated: '2026-04',
     sourceUrls: ['https://pooltool.io/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'stacks',
-    nakamotoCoefficient: 4,
+    nakamotoCoefficient: 3,
+    nakamotoNote: {
+      ko: 'Stacks Nakamoto 업그레이드는 signer 가중치 70%가 블록을 수락해야 파이널리티 성립. 따라서 halt 임계치는 > 30% stake (⅓이 아님). 상위 3개 signer 합산 30.75%가 이 임계치를 초과.',
+      en: 'Stacks Nakamoto requires 70% signer weight to accept a block, so the halt threshold is > 30% stake (not ⅓). The top 3 signers sum to 30.75%, crossing that line.',
+    },
     activeValidators: 70,
     validatorCap: null,
     minStake: { ko: 'Signer: ~100K+ STX stacking 필요', en: 'Signers need ~100K+ STX stacked' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'f32640bc8169', stakeSharePct: 12.29 },
@@ -450,7 +441,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '동적 seat price (현재 ~67K NEAR)', en: 'Dynamic seat price (~67K NEAR currently)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'nearcore (Rust) 단일', en: 'Single nearcore (Rust)' },
     topValidators: [
@@ -475,7 +465,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 60,
     minStake: { ko: '본딩 스테이크로 상위 60 진입 (dynamic)', en: 'Dynamic threshold to enter top 60' },
     permissioning: 'permissionless',
-    top33SharePct: 33,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Polychain dYdX', stakeSharePct: 12.98 },
@@ -503,7 +492,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '1 mGNO (= 0.032 GNO) + 1 GNO deposit', en: '1 mGNO (= 0.032 GNO) + 1 GNO deposit' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Ethereum 클라이언트 호환 (Prysm, Lighthouse, Teku, Nethermind, Erigon 등)', en: 'Ethereum client-compatible (Prysm, Lighthouse, Teku, Nethermind, Erigon, etc.)' },
     lastUpdated: '2026-04',
@@ -516,7 +504,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (dynamic)', en: 'Dynamic threshold to enter top 100' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Kraken01', stakeSharePct: 26.53 },
@@ -540,7 +527,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 69,
     minStake: { ko: '250K BGT 본딩 + BERA 위임', en: '250K BGT self-bond + BERA delegation' },
     permissioning: 'permissionless',
-    top33SharePct: 45,
     clientDiversity: 'single',
     nakamotoNote: {
       ko: 'Berachain hub.berachain.com 스냅샷 기준 active validator 58개, 총 257.85M BERA 스테이킹. 개별 validator stake가 10M BERA cap에 걸려 있어 상위 17개가 모두 cap에 도달 (동률). 10M × 9 = 90M ≈ 34.9%로 1/3을 처음 넘으므로 NC=9.',
@@ -560,7 +546,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 30,
     minStake: { ko: '본딩 스테이크로 상위 30 진입 (dynamic)', en: 'Dynamic threshold to enter top 30' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Chorus One', stakeSharePct: 7.51 },
@@ -588,7 +573,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 39,
     minStake: { ko: 'Council 초대제 (Google, IBM, Standard Bank 등)', en: 'Council invitation (Google, IBM, Standard Bank, etc.)' },
     permissioning: 'permissioned',
-    top33SharePct: null,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Hosted by LG | Singapore', stakeSharePct: 4.12 },
@@ -612,7 +596,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '~340K TON (Elector 컨트랙트 동적 임계치)', en: '~340K TON (dynamic threshold via Elector contract)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
     sourceUrls: ['https://tonscan.org/validators'],
@@ -628,7 +611,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '해당 없음 (UNL 등록만 필요)', en: 'N/A (UNL inclusion only)' },
     permissioning: 'n/a',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: 'Ripple, XRPLF, 대학 및 개인이 default UNL 운영. 각 노드가 자체 UNL 설정 가능하나 대부분 기본 UNL 사용.',
@@ -648,7 +630,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '참여 키 등록만 필요 (사실상 0 ALGO 하한)', en: 'Participation key registration only (effectively no ALGO minimum)' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     notes: {
       ko: 'Algorand Foundation과 거래소/재단 관련 지갑이 유의미한 스테이크 보유. 참여 스테이크(participation)는 전체의 일부.',
@@ -664,7 +645,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 21,
     minStake: { ko: 'EOS 보유자 투표로 선출 (DPoS)', en: 'Elected by EOS-holder votes (DPoS)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     topValidators: [
       { name: 'eosphereiobp', stakeSharePct: 4.8 },
@@ -692,7 +672,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '동적 bond 요구량 (현재 ~300K+ RUNE)', en: 'Dynamic bond requirement (~300K+ RUNE currently)' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Node y6yhskf6', stakeSharePct: 1.36 },
@@ -720,7 +699,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '50K S 셀프 스테이크 + 위임', en: '50K S self-stake + delegation' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     topValidators: [
       { name: 'SonicStrategy CSE.SPTZ OTCQB.DBKSF #2', stakeSharePct: 11.11 },
@@ -748,7 +726,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '6,000 XTZ (baking rights 최소)', en: '6,000 XTZ minimum (for baking rights)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Octez (공식), TezEdge, Mavryk 등', en: 'Octez (official), TezEdge, Mavryk, etc.' },
     topValidators: [
@@ -773,7 +750,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 150,
     minStake: { ko: '본딩 스테이크로 상위 150 진입 (dynamic)', en: 'Dynamic threshold to enter top 150' },
     permissioning: 'permissionless',
-    top33SharePct: 32,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Cosmostation', stakeSharePct: 8.78 },
@@ -797,7 +773,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 60,
     minStake: { ko: '본딩 스테이크로 상위 60 진입 (dynamic)', en: 'Dynamic threshold to enter top 60' },
     permissioning: 'permissionless',
-    top33SharePct: 30,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Zellic', stakeSharePct: 7.85 },
@@ -825,7 +800,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '역할별 상이 (Consensus ~250K FLOW, Collection ~250K, Execution ~1.25M, Verification ~135K)', en: 'Varies by role (Consensus ~250K FLOW, Collection ~250K, Execution ~1.25M, Verification ~135K)' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
     sourceUrls: ['https://flowscan.io/staking'],
@@ -837,7 +811,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 26,
     minStake: { ko: '250K RON (Standard Validator)', en: '250K RON (Standard Validator)' },
     permissioning: 'hybrid',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: '0xf41a...df38', stakeSharePct: 6.839 },
@@ -860,20 +833,32 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'kaia',
-    nakamotoCoefficient: null,
+    nakamotoCoefficient: 1,
     nakamotoNote: {
-      ko: 'Council-based IBFT. 49개 Council 중 담합이 ⅓ 초과 시 halt 가능하나, Council 자체가 제한적 심사 기반.',
-      en: 'Council-based IBFT. Collusion above ⅓ of 49 Council members could halt consensus, but the Council itself is vetted.',
+      ko: 'kaiascan 스냅샷 기준 36개 Council Validator, 총 약 2.619B KAIA 스테이킹. NEOPIN 단일 노드가 약 40.86%를 보유해 ⅓ halt 임계치를 혼자 넘김.',
+      en: 'Per kaiascan snapshot: 36 Council Validators, ~2.619B KAIA total. NEOPIN alone holds ~40.86%, single-handedly crossing the ⅓ halt threshold.',
     },
-    activeValidators: 49,
-    validatorCap: 49,
-    minStake: { ko: '5M KLAY (Council 신청 요건) + 거버넌스 심사', en: '5M KLAY (to apply for Council) + governance review' },
+    activeValidators: 36,
+    validatorCap: null,
+    minStake: { ko: '5M KAIA (Council 신청 요건) + 거버넌스 심사', en: '5M KAIA (to apply for Council) + governance review' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
+    clientDiversityNote: { ko: 'Klaytn 포크 단일 구현 (kaia-core)', en: 'Single Klaytn-fork implementation (kaia-core)' },
+    topValidators: [
+      { name: 'NEOPIN', stakeSharePct: 40.86 },
+      { name: 'Kakao Corp', stakeSharePct: 10.91 },
+      { name: 'LINE NEXT Inc.', stakeSharePct: 9.97 },
+      { name: 'Kakao Pay', stakeSharePct: 5.19 },
+      { name: 'Kakao Entertainment', stakeSharePct: 3.65 },
+      { name: 'Bughole', stakeSharePct: 3.34 },
+      { name: 'LINE NEXT Corp.', stakeSharePct: 2.99 },
+      { name: 'Swapscanner', stakeSharePct: 2.61 },
+      { name: 'Ozys', stakeSharePct: 1.63 },
+      { name: 'DELIGHT', stakeSharePct: 1.50 },
+    ],
     notes: {
-      ko: 'Klaytn + Finschia 통합 후 Council 확장 중. 기업/재단 중심.',
-      en: 'Expanding Council since the Klaytn + Finschia merger. Enterprise/foundation-centric.',
+      ko: 'Klaytn + Finschia 통합 이후 36개 Council 구성. NEOPIN이 단독으로 40%+ 스테이크를 보유해 극도로 집중된 구조. Kakao/LINE 계열사들을 단일 주체로 묶으면 상위 3개 주체가 70% 이상을 점유.',
+      en: 'Post Klaytn + Finschia merger Council of 36. NEOPIN alone holds 40%+ of stake — extreme concentration. Grouping Kakao and LINE affiliates as single entities, the top 3 entities hold >70%.',
     },
     lastUpdated: '2026-04',
     sourceUrls: ['https://kaiascan.io/validators'],
@@ -889,7 +874,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: 'NNS 화이트리스트 승인된 노드 제공자만', en: 'Only NNS-whitelisted node providers' },
     permissioning: 'permissioned',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: '~40개 서브넷에 각 13~40개 노드. 각 노드는 서로 다른 데이터센터/국가에 분산 (NNS 정책).',
@@ -909,7 +893,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 180,
     minStake: { ko: 'Cosmos Hub 검증자만 참여 가능', en: 'Only Cosmos Hub validators participate' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Cosmostation', stakeSharePct: 6.11 },
@@ -933,7 +916,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 297,
     minStake: { ko: 'Validator: 동적 (~2M DOT). Nominator: ~530 DOT 최소', en: 'Validator: dynamic (~2M DOT). Nominator: ~530 DOT minimum' },
     permissioning: 'permissionless',
-    top33SharePct: 33,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'polkadot-sdk (Rust, 공식), Gossamer (Go)', en: 'polkadot-sdk (Rust, official), Gossamer (Go)' },
     notes: {
@@ -950,7 +932,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (현재 ~1.5M TIA)', en: 'Dynamic threshold to enter top 100 (~1.5M TIA currently)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Anchorage Digital', stakeSharePct: 11.36 },
@@ -974,7 +955,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '섹터별 pledge collateral (섹터 사이즈별 상이)', en: 'Per-sector pledge collateral (varies by sector size)' },
     permissioning: 'permissionless',
-    top33SharePct: 30,
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Lotus (공식 Go), Venus, Forest (Rust)', en: 'Lotus (official Go), Venus, Forest (Rust)' },
     lastUpdated: '2026-04',
@@ -987,7 +967,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 130,
     minStake: { ko: '본딩 스테이크로 상위 130 진입 (dynamic)', en: 'Dynamic threshold to enter top 130' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Zellic', stakeSharePct: 13.97 },
@@ -1015,7 +994,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 180,
     minStake: { ko: '본딩 스테이크로 상위 180 진입 (현재 ~85K+ ATOM)', en: 'Dynamic threshold to enter top 180 (~85K+ ATOM currently)' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'gaia (Go, 공식) 단일', en: 'Single gaia (Go, official)' },
     topValidators: [
@@ -1044,7 +1022,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '초기 초청 검증자 (세부 미공개)', en: 'Invited validators at launch (details not public)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: '2025년 메인넷 초기 단계. 퍼미션리스 확장 로드맵 있으나 초기에는 Plasma Labs 및 초청 운영자 중심.',
@@ -1060,7 +1037,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '1M FLR (FTSO data provider 포함 진입)', en: '1M FLR (including FTSO data providers)' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'Flare 포크 Avalanche Node', en: 'Flare fork of Avalanche Node' },
     topValidators: [
@@ -1085,7 +1061,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 40,
     minStake: { ko: '1.5M WEMIX (NCP 요건)', en: '1.5M WEMIX (required for NCP)' },
     permissioning: 'hybrid',
-    top33SharePct: 33,
     clientDiversity: 'single',
     notes: {
       ko: 'SPoA 40 WONDERS. 각 NCP가 동일 스테이크 요건이라 스테이크 분포는 균등.',
@@ -1101,7 +1076,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '초기 초청 검증자 (세부 미공개)', en: 'Invited validators at launch (details not public)' },
     permissioning: 'hybrid',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: '2025년 12월 메인넷. DPoS 전환 로드맵 있으나 현재는 Bitfinex/Tether 연관 운영자 중심.',
@@ -1117,7 +1091,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '해당 없음 (퍼미션드 · 초청제)', en: 'N/A (permissioned, invite-only)' },
     permissioning: 'permissioned',
-    top33SharePct: null,
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'Reth 기반 EVM, 자체 Simplex BFT', en: 'Reth-based EVM with proprietary Simplex BFT' },
     notes: {
@@ -1138,7 +1111,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '3.2M ASTR (Collator 본드)', en: '3.2M ASTR (Collator bond)' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
     sourceUrls: ['https://docs.astar.network/docs/build/nodes/collator/learn/'],
@@ -1150,7 +1122,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '55K SUPRA 최소 셀프 본딩', en: '55K SUPRA minimum self-bond' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: 'Tribes & Clans 구조: 전체 노드를 지역별 Clan으로 분할 후 Moonshot BFT 수행.',
@@ -1166,7 +1137,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: null,
     minStake: { ko: '5M SOMI', en: '5M SOMI' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: '메인넷 초기 단계. MultiStream 구조상 각 검증자가 독립 data chain을 운영.',
@@ -1182,7 +1152,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (dynamic)', en: 'Dynamic threshold to enter top 100' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'Association 2', stakeSharePct: 15.53 },
@@ -1214,7 +1183,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (dynamic)', en: 'Dynamic threshold to enter top 100' },
     permissioning: 'permissionless',
-    top33SharePct: 35,
     clientDiversity: 'single',
     topValidators: [
       { name: 'mv2.story.foundation', stakeSharePct: 6.87 },
@@ -1238,7 +1206,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (dynamic)', en: 'Dynamic threshold to enter top 100' },
     permissioning: 'permissionless',
-    top33SharePct: 40,
     clientDiversity: 'single',
     topValidators: [
       { name: 'OmniChain1', stakeSharePct: 8.24 },
@@ -1266,7 +1233,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     validatorCap: 128,
     minStake: { ko: '35K VANA (L1 Validator)', en: '35K VANA (L1 Validator)' },
     permissioning: 'permissionless',
-    top33SharePct: null,
     clientDiversity: 'single',
     notes: {
       ko: 'L1 Validator 64 → 128 확장 중. Satya Validator (TEE 기반 데이터 검증자)는 별도.',
@@ -1289,7 +1255,6 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'N/A (GSF invitation with institutional vetting)',
     },
     permissioning: 'permissioned',
-    top33SharePct: null,
     clientDiversity: 'single',
     clientDiversityNote: {
       ko: 'Digital Asset의 Canton 프로토콜 단일 구현 (DAML 기반)',

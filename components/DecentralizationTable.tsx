@@ -123,9 +123,6 @@ export function DecentralizationTable({ rows, locale }: DecentralizationTablePro
               <th className="px-3 py-3 text-left font-medium">
                 {pick(UI.dec_col_permission, locale)}
               </th>
-              <th className="hidden px-3 py-3 text-right font-medium lg:table-cell">
-                {pick(UI.dec_col_top33, locale)}
-              </th>
               <th className="hidden px-3 py-3 text-left font-medium md:table-cell">
                 {pick(UI.dec_col_client, locale)}
               </th>
@@ -200,9 +197,6 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
             {pick(PERMISSIONING_LABEL[permissioning], locale)}
           </span>
         </td>
-        <td className="hidden px-3 py-3 text-right align-middle font-mono text-xs text-zinc-300 lg:table-cell">
-          {dec?.top33SharePct != null ? `${dec.top33SharePct.toFixed(1)}%` : '-'}
-        </td>
         <td className="hidden px-3 py-3 align-middle md:table-cell">
           <span
             className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] uppercase tracking-wider ${clientStyle[dec?.clientDiversity ?? 'n/a']}`}
@@ -225,7 +219,7 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
       </tr>
       {expanded && (
         <tr className="border-b border-zinc-800 bg-zinc-950/60">
-          <td colSpan={8} className="px-6 py-5">
+          <td colSpan={7} className="px-6 py-5">
             <ExpandedDetail chain={chain} dec={dec} locale={locale} />
           </td>
         </tr>
@@ -274,10 +268,6 @@ function ExpandedDetail({
       <DetailItem
         label={pick(UI.dec_detail_entry, locale)}
         value={pick(dec.minStake, locale)}
-      />
-      <DetailItem
-        label={pick(UI.dec_detail_top33, locale)}
-        value={dec.top33SharePct != null ? `${dec.top33SharePct.toFixed(1)}%` : pick(UI.no_data, locale)}
       />
       <DetailItem
         label={pick(UI.dec_detail_client, locale)}
