@@ -995,8 +995,12 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'plasma',
-    nakamotoCoefficient: null,
-    activeValidators: 25,
+    nakamotoCoefficient: 1,
+    nakamotoNote: {
+      ko: 'Token Terminal 기준 number of validators = 2. 현재 Plasma Labs 및 소수 제휴 노드만 운영되는 초기 단계로, 사실상 단일 주체 수준의 중앙화이므로 NC=1로 표기.',
+      en: 'Token Terminal reports 2 validators. The network is in its early phase operated effectively by Plasma Labs and a small set of affiliates, so concentration is at single-entity level (NC=1).',
+    },
+    activeValidators: 2,
     validatorCap: null,
     minStake: { ko: '초기 초청 검증자 (세부 미공개)', en: 'Invited validators at launch (details not public)' },
     permissioning: 'hybrid',
