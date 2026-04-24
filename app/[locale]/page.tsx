@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: isKo ? 'PoS L1 슬래싱 대시보드' : 'PoS L1 Slashing Dashboard',
     description: isKo
-      ? '시가총액 상위 100 L1 블록체인 중 Proof-of-Stake 체인의 합의 메커니즘, 슬래싱 조건, 슬래싱된 토큰 처리 방식을 정리한 대시보드.'
-      : 'Dashboard summarizing consensus mechanisms, slashable conditions, and slashed-token handling for PoS L1 blockchains in the top 100 by market cap.',
+      ? 'PoS L1 체인의 합의 메커니즘, 슬래싱 조건, 슬래싱된 토큰 처리 방식을 비교한 대시보드.'
+      : 'A dashboard comparing consensus mechanisms, slashable conditions, and slashed-token handling across PoS L1 chains.',
   };
 }
 

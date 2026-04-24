@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: isKo ? 'PoS L1 노드 탈중앙화 대시보드' : 'PoS L1 Node Decentralization Dashboard',
     description: isKo
-      ? 'Nakamoto Coefficient, 검증자 수, 진입 장벽, 상위 스테이크 점유율 등으로 PoS L1 체인의 노드 탈중앙화 수준을 비교한 대시보드.'
-      : 'Dashboard comparing node decentralization across PoS L1 chains via Nakamoto Coefficient, validator counts, entry barriers, and top-stake concentration.',
+      ? 'PoS L1 체인의 노드 탈중앙화 수준을 Nakamoto Coefficient, 검증자 수, 퍼미션 모델 등으로 비교한 대시보드.'
+      : 'A dashboard comparing node decentralization across PoS L1 chains via Nakamoto Coefficient, validator counts, and permissioning.',
   };
 }
 
