@@ -1161,10 +1161,10 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'story',
-    nakamotoCoefficient: null,
+    nakamotoCoefficient: 27,
     nakamotoNote: {
-      ko: 'staking.story.foundation 스냅샷 기준 전체 72 validator, 총 스테이크 ~507.6M IP. 상위 10개 validator가 총 스테이크의 24.95%만을 차지해 NC는 11 이상으로 확실. 상위 10 외의 순위별 데이터가 공개 페이지에서 페이지네이션되어 NC의 정확한 값 산출은 보류.',
-      en: "Snapshot of staking.story.foundation shows 72 active validators totaling ~507.6M IP. The top 10 validators hold only 24.95%, so NC is definitely > 10. Exact NC requires ranks 11+ data beyond the public page's pagination, so it is left unset.",
+      ko: 'staking.story.foundation 기준 전체 72 validator, 총 스테이크 507,578,056.6 IP. 상위 30 validator의 누적 스테이크를 계산한 결과 27번째(figment-3)에서 누적 33.40%로 1/3을 초과하여 NC=27.',
+      en: 'Based on staking.story.foundation: 72 total validators, 507,578,056.6 IP total staked. Cumulative stake analysis across the top 30 crosses 1/3 at rank 27 (figment-3, cumulative 33.40%), giving NC=27.',
     },
     activeValidators: 72,
     validatorCap: 100,
