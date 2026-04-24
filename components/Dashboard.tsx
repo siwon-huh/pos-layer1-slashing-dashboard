@@ -5,6 +5,7 @@ import { CHAINS, type Chain } from '@/lib/chains';
 import { UI, pick, type Locale } from '@/lib/i18n';
 import { ChainTable } from './ChainTable';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { PageNav } from './PageNav';
 
 type FilterKey =
   | 'all'
@@ -93,10 +94,11 @@ export function Dashboard({ locale, chains = CHAINS }: DashboardProps) {
     <div className="mx-auto w-full max-w-7xl px-6 py-10 md:py-16">
       <header className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
-            {pick(UI.badge, locale)}
-          </div>
+          <PageNav locale={locale} active="slashing" />
           <LocaleSwitcher current={locale} />
+        </div>
+        <div className="inline-flex items-center self-start rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
+          {pick(UI.badge, locale)}
         </div>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
           {pick(UI.title_prefix, locale)}

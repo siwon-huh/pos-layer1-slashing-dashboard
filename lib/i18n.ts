@@ -4,6 +4,7 @@ import type {
   SlashingStatus,
   TokenDestination,
 } from './chains';
+import type { ClientDiversityStatus, Permissioning } from './decentralization';
 
 export type Locale = 'ko' | 'en';
 
@@ -94,6 +95,60 @@ export const UI: Record<string, LocalizedText> = {
   detail_token: { ko: '토큰 처리', en: 'Token handling' },
   detail_docs: { ko: '공식 문서', en: 'Official docs' },
   slashing_label_prefix: { ko: '슬래싱 ', en: '' },
+
+  nav_slashing: { ko: '슬래싱', en: 'Slashing' },
+  nav_decentralization: { ko: '노드 탈중앙화', en: 'Node decentralization' },
+
+  decentralization_title_main: { ko: '노드 탈중앙화', en: 'Node decentralization' },
+  decentralization_subtitle: {
+    ko: '각 PoS L1의 검증자 탈중앙화 수준을 Nakamoto Coefficient, 검증자 수, 진입 장벽, 상위 스테이크 점유율, 퍼미션 모델, 클라이언트 다양성 기준으로 비교합니다. L2 및 permissioned 체인은 해당되는 항목만 표시합니다.',
+    en: 'Compare validator decentralization across PoS L1s using Nakamoto Coefficient, validator count, entry barrier, top-stake concentration, permissioning model, and client diversity. L2s and permissioned chains show only applicable metrics.',
+  },
+
+  dec_stat_median_nc: { ko: 'Nakamoto 중앙값', en: 'Median Nakamoto' },
+  dec_stat_permissionless: { ko: '퍼미션리스', en: 'Permissionless' },
+  dec_stat_permissioned: { ko: '퍼미션드', en: 'Permissioned' },
+  dec_stat_unknown: { ko: '데이터 없음', en: 'Unknown' },
+
+  dec_col_nakamoto: { ko: '나카모토 계수', en: 'Nakamoto Coefficient' },
+  dec_legend_title: { ko: '나카모토 계수란?', en: 'What is the Nakamoto Coefficient?' },
+  dec_legend_body: {
+    ko: '체인의 컨센서스를 정지(halt)시키기 위해 담합이 필요한 최소 검증자 수입니다. 정확히는 지분 합계가 ⅓을 초과하는 최소 상위 검증자 집합의 크기로 정의됩니다. 숫자가 낮을수록 소수 주체에 의한 중앙화 리스크가 크다는 의미. 예를 들어 Ethereum은 Lido, Coinbase, Binance 같은 스테이킹 주체 기준 3 수준이며, Polkadot은 NPoS가 스테이크를 297개 검증자에게 균등 분산시키도록 설계되어 175에 이릅니다.',
+    en: "The minimum number of validators whose combined stake exceeds ⅓, enough to halt the chain's consensus through collusion. Lower numbers indicate higher centralization risk from a small group. For example, Ethereum sits around 3 when measured by staking entities like Lido, Coinbase, and Binance, while Polkadot reaches 175 because NPoS is explicitly designed to spread stake evenly across 297 validators.",
+  },
+  dec_legend_color_low: { ko: '≤ 5 (심각)', en: '≤ 5 (severe)' },
+  dec_legend_color_mid: { ko: '6 ~ 15 (중간)', en: '6 to 15 (moderate)' },
+  dec_legend_color_high: { ko: '≥ 16 (양호)', en: '≥ 16 (healthy)' },
+  dec_col_validators: { ko: '검증자', en: 'Validators' },
+  dec_col_entry: { ko: '진입 장벽', en: 'Entry barrier' },
+  dec_col_permission: { ko: '퍼미션', en: 'Permission' },
+  dec_col_top33: { ko: '상위 ⅓', en: 'Top ⅓' },
+  dec_col_client: { ko: '클라이언트', en: 'Client' },
+
+  dec_detail_nakamoto: { ko: 'Nakamoto Coefficient', en: 'Nakamoto Coefficient' },
+  dec_detail_nakamoto_desc: {
+    ko: '컨센서스를 halt 시키려면 담합이 필요한 최소 검증자 수 (스테이크 합계가 ⅓을 넘는 최소 집합). 낮을수록 중앙화.',
+    en: 'Minimum number of validators whose combined stake exceeds ⅓ and could halt consensus. Lower = more centralized.',
+  },
+  dec_detail_validators: { ko: '검증자 세트', en: 'Validator set' },
+  dec_detail_entry: { ko: '진입 장벽', en: 'Entry barrier' },
+  dec_detail_permission: { ko: '퍼미션 모델', en: 'Permissioning model' },
+  dec_detail_top33: { ko: '상위 ⅓ 점유', en: 'Top ⅓ stake share' },
+  dec_detail_client: { ko: '클라이언트 다양성', en: 'Client diversity' },
+  dec_detail_sources: { ko: '데이터 출처', en: 'Sources' },
+  dec_detail_last_updated: { ko: '업데이트 기준', en: 'Last updated' },
+
+  permission_permissionless: { ko: '퍼미션리스', en: 'Permissionless' },
+  permission_hybrid: { ko: '하이브리드', en: 'Hybrid' },
+  permission_permissioned: { ko: '퍼미션드', en: 'Permissioned' },
+  permission_na: { ko: '해당 없음', en: 'N/A' },
+
+  client_single: { ko: '단일 구현', en: 'Single implementation' },
+  client_multi: { ko: '다중 구현', en: 'Multiple implementations' },
+  client_na: { ko: '해당 없음', en: 'N/A' },
+
+  no_data: { ko: '데이터 없음', en: 'No data' },
+  uncapped: { ko: '상한 없음', en: 'Uncapped' },
 };
 
 export const CONSENSUS_FAMILY_LABEL: Record<ConsensusFamily, LocalizedText> = {
@@ -144,4 +199,17 @@ export const SEVERITY_LABEL: Record<Severity, LocalizedText> = {
   severe: { ko: '심각', en: 'Severe' },
   moderate: { ko: '중간', en: 'Moderate' },
   mild: { ko: '경미', en: 'Mild' },
+};
+
+export const PERMISSIONING_LABEL: Record<Permissioning, LocalizedText> = {
+  permissionless: { ko: '퍼미션리스', en: 'Permissionless' },
+  hybrid: { ko: '하이브리드', en: 'Hybrid' },
+  permissioned: { ko: '퍼미션드', en: 'Permissioned' },
+  'n/a': { ko: '해당 없음', en: 'N/A' },
+};
+
+export const CLIENT_DIVERSITY_LABEL: Record<ClientDiversityStatus, LocalizedText> = {
+  single: { ko: '단일 구현', en: 'Single' },
+  multi: { ko: '다중 구현', en: 'Multiple' },
+  'n/a': { ko: '해당 없음', en: 'N/A' },
 };
