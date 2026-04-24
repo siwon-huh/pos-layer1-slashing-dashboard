@@ -120,10 +120,10 @@ export function DecentralizationTable({ rows, locale }: DecentralizationTablePro
               <th className="hidden px-3 py-3 text-right font-medium lg:table-cell">
                 {pick(UI.dec_col_top33, locale)}
               </th>
-              <th className="hidden px-3 py-3 text-left font-medium xl:table-cell">
+              <th className="hidden px-3 py-3 text-left font-medium md:table-cell">
                 {pick(UI.dec_col_entry, locale)}
               </th>
-              <th className="hidden px-3 py-3 text-left font-medium xl:table-cell">
+              <th className="hidden px-3 py-3 text-left font-medium md:table-cell">
                 {pick(UI.dec_col_client, locale)}
               </th>
               <th className="w-10 px-3 py-3 text-right font-medium" aria-hidden></th>
@@ -198,12 +198,14 @@ function TableRow({ chain, dec, locale, expanded, onToggle }: TableRowProps) {
           </span>
         </td>
         <td className="hidden px-3 py-3 text-right align-middle font-mono text-xs text-zinc-300 lg:table-cell">
-          {dec?.top33SharePct != null ? `${dec.top33SharePct.toFixed(1)}%` : '—'}
+          {dec?.top33SharePct != null ? `${dec.top33SharePct.toFixed(1)}%` : '-'}
         </td>
-        <td className="hidden px-3 py-3 align-middle text-xs text-zinc-400 xl:table-cell">
-          {dec ? pick(dec.minStake, locale) : pick(UI.no_data, locale)}
+        <td className="hidden max-w-[18rem] px-3 py-3 align-middle text-xs text-zinc-400 md:table-cell">
+          <div className="truncate">
+            {dec ? pick(dec.minStake, locale) : pick(UI.no_data, locale)}
+          </div>
         </td>
-        <td className="hidden px-3 py-3 align-middle text-xs text-zinc-400 xl:table-cell">
+        <td className="hidden px-3 py-3 align-middle text-xs text-zinc-400 md:table-cell">
           {pick(CLIENT_DIVERSITY_LABEL[dec?.clientDiversity ?? 'n/a'], locale)}
         </td>
         <td className="px-3 py-3 text-right align-middle">
