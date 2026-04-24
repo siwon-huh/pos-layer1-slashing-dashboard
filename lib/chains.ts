@@ -1880,8 +1880,8 @@ const RAW_CHAINS: readonly RawChain[] = [
     consensusFamily: 'HotStuff',
     slashingStatus: 'inactive',
     slashingNote: {
-      ko: '2025년 9월 Stripe·Paradigm이 인큐베이팅 발표, 2026년 3월 18일 메인넷 런칭 (Machine Payments Protocol 동시 공개). 메인넷 출시 후에도 검증자 세트는 core team + 초기 파트너(Visa, Mastercard, OpenAI, Anthropic 등)로 퍼미션드 운영 중이며, 공개된 슬래싱 파라미터는 아직 없습니다.',
-      en: 'Incubation announced by Stripe & Paradigm in Sep 2025; mainnet launched Mar 18, 2026 (alongside the Machine Payments Protocol). Even post-launch the validator set is permissioned — operated by the core team and early partners (Visa, Mastercard, OpenAI, Anthropic, etc.) — with no public slashing parameters yet.',
+      ko: '2026년 3월 18일 메인넷 런칭. 메인넷 출시 후에도 검증자 세트는 core team + 초기 파트너(Visa, Mastercard, OpenAI, Anthropic 등)로 퍼미션드 운영 중이며, 공개된 슬래싱 파라미터는 아직 없습니다.',
+      en: 'Mainnet launched on Mar 18, 2026. Even post-launch the validator set is permissioned — operated by the core team and early partners (Visa, Mastercard, OpenAI, Anthropic, etc.) — with no public slashing parameters yet.',
     },
     offenses: [],
     tokenDestination: 'none',
