@@ -25,7 +25,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     nakamotoCoefficient: 350_000,
     nakamotoNote: {
       ko: '검증자 수 기준. 모든 validator가 32 ETH 동일 가중치를 가지므로 NC = 활성 validator 수의 ⅓ (~1.05M의 1/3). 스테이킹 풀 지분(Lido ~28%, Coinbase, Binance 등)을 하나의 엔티티로 묶으면 훨씬 낮은 값이 보고되기도 하지만, Lido는 DAO 거버넌스 하에 다수의 독립 노드 운영자가 키를 운영하는 구조라 단일 공격 주체로 간주하기 어렵다는 반론이 있습니다.',
-      en: 'By validator count. All validators share an equal 32 ETH weight, so NC ≈ one-third of active validators (~1.05M / 3). When staking pool shares (Lido ~28%, Coinbase, Binance, etc.) are aggregated as single entities, much lower numbers are sometimes reported — but Lido is a DAO-governed protocol where many independent node operators hold the keys, so treating it as a single attacker is itself contested.',
+      en: 'By validator count. All validators share an equal 32 ETH weight, so NC ≈ one-third of active validators (~1.05M / 3). When staking pool shares (Lido ~28%, Coinbase, Binance, etc.) are aggregated as single entities, much lower numbers are sometimes reported, but Lido is a DAO-governed protocol where many independent node operators hold the keys, so treating it as a single attacker is itself contested.',
     },
     activeValidators: 1_050_000,
     validatorCap: null,
@@ -63,7 +63,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'solana',
-    nakamotoCoefficient: 22,
+    nakamotoCoefficient: 11,
     activeValidators: 1500,
     validatorCap: null,
     minStake: { ko: '규정상 없음 (투표 수수료 ~1 SOL/day, 실질적으로 고성능 하드웨어 필요)', en: 'No hard minimum; vote fees ~1 SOL/day; high-end hardware effectively required' },
@@ -72,7 +72,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     clientDiversity: 'multi',
     clientDiversityNote: { ko: 'Agave (구 Solana Labs), Jito-Solana, Firedancer (Frankendancer 포함)', en: 'Agave (formerly Solana Labs), Jito-Solana, Firedancer (incl. Frankendancer)' },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.validators.app/', 'https://docs.anza.xyz/'],
+    sourceUrls: ['https://www.validators.app/', 'https://docs.anza.xyz/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'tron',
@@ -108,7 +108,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'hyperliquid',
-    nakamotoCoefficient: 5,
+    nakamotoCoefficient: 3,
     activeValidators: 21,
     validatorCap: null,
     minStake: { ko: '~10K HYPE 본딩 + 위임 필요', en: '~10K HYPE self-bond + delegations required' },
@@ -120,11 +120,11 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'Since 2024 mainnet, started with 21 validators and expanding gradually. Team/cofounder-affiliated nodes hold a significant share of the early stake.',
     },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://hyperliquid.gitbook.io/hyperliquid-docs/validators'],
+    sourceUrls: ['https://hyperliquid.gitbook.io/hyperliquid-docs/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'polygon',
-    nakamotoCoefficient: 7,
+    nakamotoCoefficient: 4,
     activeValidators: 100,
     validatorCap: 105,
     minStake: { ko: '~100K POL 셀프 스테이크 + 위임', en: '~100K POL self-stake + delegations' },
@@ -132,11 +132,11 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: 40,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://staking.polygon.technology/'],
+    sourceUrls: ['https://staking.polygon.technology/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'avalanche',
-    nakamotoCoefficient: 28,
+    nakamotoCoefficient: 26,
     activeValidators: 1200,
     validatorCap: null,
     minStake: { ko: '2,000 AVAX (검증자), 25 AVAX (위임)', en: '2,000 AVAX (validator) or 25 AVAX (delegator)' },
@@ -145,11 +145,11 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'AvalancheGo 단일 (Coreth 서브컴포넌트)', en: 'Single AvalancheGo (Coreth subcomponent)' },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.avax.network/about/blog/decentralization', 'https://subnets.avax.network/validators'],
+    sourceUrls: ['https://www.avax.network/about/blog/decentralization', 'https://subnets.avax.network/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'sui',
-    nakamotoCoefficient: 17,
+    nakamotoCoefficient: 18,
     activeValidators: 113,
     validatorCap: null,
     minStake: { ko: '30M SUI (현재 요구 · 커뮤니티 위임 포함)', en: '30M SUI (current requirement, incl. delegation)' },
@@ -158,11 +158,11 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'sui-node 단일 구현 (Rust)', en: 'Single sui-node (Rust)' },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://suivision.xyz/validators', 'https://docs.sui.io/concepts/tokenomics'],
+    sourceUrls: ['https://suivision.xyz/validators', 'https://docs.sui.io/concepts/tokenomics', 'https://nakaflow.io/'],
   },
   {
     chainId: 'monad',
-    nakamotoCoefficient: 3,
+    nakamotoCoefficient: 24,
     activeValidators: 40,
     validatorCap: 100,
     minStake: { ko: '초기 초청 검증자 (구체 스테이크 미공개)', en: 'Invited validators at launch (stake requirement not public)' },
@@ -174,7 +174,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'Mainnet late 2025. Initial validator set is invited, with a roadmap toward permissionless expansion.',
     },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://docs.monad.xyz/'],
+    sourceUrls: ['https://docs.monad.xyz/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'cronos',
@@ -194,7 +194,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'aptos',
-    nakamotoCoefficient: 13,
+    nakamotoCoefficient: 15,
     activeValidators: 150,
     validatorCap: null,
     minStake: { ko: '1M APT (셀프 본딩 기준 진입 임계치)', en: '1M APT (self-bond threshold to enter set)' },
@@ -203,7 +203,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     clientDiversity: 'single',
     clientDiversityNote: { ko: 'aptos-core (Rust) 단일', en: 'Single aptos-core (Rust)' },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://explorer.aptoslabs.com/validators'],
+    sourceUrls: ['https://explorer.aptoslabs.com/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'stellar',
@@ -244,7 +244,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'cardano',
-    nakamotoCoefficient: 33,
+    nakamotoCoefficient: 22,
     activeValidators: 3000,
     validatorCap: null,
     minStake: { ko: '스테이크 풀 운영: 500 ADA 보증금 + pledge. 위임: 제한 없음', en: 'Pool operator: 500 ADA deposit + pledge. Delegation: no minimum' },
@@ -257,7 +257,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: '3000+ stake pools, with saturation mechanism preventing artificial centralization. NC reflects corporate/exchange pool aggregation.',
     },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://pooltool.io/'],
+    sourceUrls: ['https://pooltool.io/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'stacks',
@@ -347,7 +347,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'sei',
-    nakamotoCoefficient: 8,
+    nakamotoCoefficient: 7,
     activeValidators: 30,
     validatorCap: 30,
     minStake: { ko: '본딩 스테이크로 상위 30 진입 (dynamic)', en: 'Dynamic threshold to enter top 30' },
@@ -355,14 +355,14 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: 40,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.mintscan.io/sei/validators'],
+    sourceUrls: ['https://www.mintscan.io/sei/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'hedera',
-    nakamotoCoefficient: null,
+    nakamotoCoefficient: 11,
     nakamotoNote: {
-      ko: 'Permissioned council 구조라 전통적 NC 개념 미적용. 39개 Council 노드 운영.',
-      en: 'Permissioned council structure; traditional NC does not apply. 39 council nodes target.',
+      ko: 'Permissioned council이지만 HBAR 홀더가 council 노드에 위임 가능. Nakaflow는 위임 스테이크 분포 기준으로 NC를 11로 측정.',
+      en: 'Permissioned council but HBAR holders can delegate to council nodes; Nakaflow measures NC by delegated-stake distribution at 11.',
     },
     activeValidators: 31,
     validatorCap: 39,
@@ -371,7 +371,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: null,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://hedera.com/council'],
+    sourceUrls: ['https://hedera.com/council', 'https://nakaflow.io/'],
   },
   {
     chainId: 'ton',
@@ -407,10 +407,10 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'algorand',
-    nakamotoCoefficient: null,
+    nakamotoCoefficient: 13,
     nakamotoNote: {
-      ko: 'Pure PoS로 매 라운드 VRF 기반 committee 추첨. 정적 검증자 세트 개념이 없어 전통적 NC 정의가 모호.',
-      en: 'Pure PoS samples a VRF-based committee every round; with no static validator set, the traditional NC definition is ambiguous.',
+      ko: 'Pure PoS는 매 라운드 VRF 기반 committee 추첨을 하지만, 참여자별 participation stake 분포로 측정 시 Nakaflow 기준 NC=13.',
+      en: 'Pure PoS samples a VRF-based committee each round; measured by participant stake distribution, Nakaflow reports NC=13.',
     },
     activeValidators: 1500,
     validatorCap: null,
@@ -423,7 +423,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'Algorand Foundation and exchange/foundation-affiliated wallets hold a meaningful share. Participation stake is a subset of total supply.',
     },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://algoexplorer.io/'],
+    sourceUrls: ['https://algoexplorer.io/', 'https://nakaflow.io/'],
   },
   {
     chainId: 'eos',
@@ -443,7 +443,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'thorchain',
-    nakamotoCoefficient: 6,
+    nakamotoCoefficient: 28,
     activeValidators: 100,
     validatorCap: 100,
     minStake: { ko: '동적 bond 요구량 (현재 ~300K+ RUNE)', en: 'Dynamic bond requirement (~300K+ RUNE currently)' },
@@ -455,7 +455,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
       en: 'Churn system periodically rotates out the weakest nodes. A portion of bonds sits in the churn queue.',
     },
     lastUpdated: '2026-04',
-    sourceUrls: ['https://thorchain.net/nodes'],
+    sourceUrls: ['https://thorchain.net/nodes', 'https://nakaflow.io/'],
   },
   {
     chainId: 'sonic',
@@ -488,7 +488,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'osmosis',
-    nakamotoCoefficient: 11,
+    nakamotoCoefficient: 7,
     activeValidators: 150,
     validatorCap: 150,
     minStake: { ko: '본딩 스테이크로 상위 150 진입 (dynamic)', en: 'Dynamic threshold to enter top 150' },
@@ -496,7 +496,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: 32,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.mintscan.io/osmosis/validators'],
+    sourceUrls: ['https://www.mintscan.io/osmosis/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'injective',
@@ -617,7 +617,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'celestia',
-    nakamotoCoefficient: 7,
+    nakamotoCoefficient: 8,
     activeValidators: 100,
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (현재 ~1.5M TIA)', en: 'Dynamic threshold to enter top 100 (~1.5M TIA currently)' },
@@ -625,7 +625,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: 35,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.mintscan.io/celestia/validators'],
+    sourceUrls: ['https://www.mintscan.io/celestia/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'filecoin',
@@ -658,7 +658,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'cosmos-hub',
-    nakamotoCoefficient: 7,
+    nakamotoCoefficient: 4,
     activeValidators: 180,
     validatorCap: 180,
     minStake: { ko: '본딩 스테이크로 상위 180 진입 (현재 ~85K+ ATOM)', en: 'Dynamic threshold to enter top 180 (~85K+ ATOM currently)' },
@@ -829,7 +829,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
   },
   {
     chainId: 'story',
-    nakamotoCoefficient: 8,
+    nakamotoCoefficient: 4,
     activeValidators: 80,
     validatorCap: 100,
     minStake: { ko: '본딩 스테이크로 상위 100 진입 (dynamic)', en: 'Dynamic threshold to enter top 100' },
@@ -837,7 +837,7 @@ export const DECENTRALIZATION: readonly DecentralizationData[] = [
     top33SharePct: 35,
     clientDiversity: 'single',
     lastUpdated: '2026-04',
-    sourceUrls: ['https://www.storyscan.xyz/validators'],
+    sourceUrls: ['https://www.storyscan.xyz/validators', 'https://nakaflow.io/'],
   },
   {
     chainId: 'zetachain',
